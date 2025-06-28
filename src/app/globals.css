@@ -1,26 +1,456 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Handwriting Animation Styles */
+.handwriting-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.handwriting-svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.letter-a {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: write-a 1.2s ease-in-out forwards;
+}
+
+.letter-s {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: write-s 1s ease-in-out 0.8s forwards;
+}
+
+.dot {
+  opacity: 0;
+  transform: scale(0);
+  animation: write-dot 0.3s ease-out 2s forwards;
+}
+
+@keyframes write-a {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes write-s {
+  0% {
+    stroke-dashoffset: 150;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes write-dot {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Alternative handwriting style with more realistic curves */
+.handwriting-realistic {
+  font-family: "Brush Script MT", cursive;
+  font-size: 4rem;
+  color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.handwriting-realistic::before {
+  content: "as.";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 2.5s steps(3) forwards;
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Pen drawing effect */
+.pen-effect {
+  position: relative;
+}
+
+.pen-effect::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: black;
+  border-radius: 50%;
+  animation: pen-move 2.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes pen-move {
+  0% {
+    left: -10px;
+    opacity: 1;
+  }
+  25% {
+    left: 30%;
+    opacity: 1;
+  }
+  50% {
+    left: 60%;
+    opacity: 1;
+  }
+  75% {
+    left: 85%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Enhanced handwriting with ink effect */
+.ink-effect {
+  position: relative;
+  font-family: "Dancing Script", cursive;
+  font-size: 5rem;
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(90deg, black 0%, black 100%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: ink-reveal 2.5s ease-in-out forwards;
+}
+
+@keyframes ink-reveal {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+/* Signature style animation */
+.signature-style {
+  font-family: "Allura", cursive;
+  font-size: 6rem;
+  color: black;
+  position: relative;
+  opacity: 0;
+  animation: signature-appear 0.5s ease-out 2s forwards;
+}
+
+.signature-style::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  animation: signature-reveal 2s ease-in-out forwards;
+}
+
+@keyframes signature-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes signature-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Performance optimizations */
+* {
+  will-change: auto;
+}
+
+.motion-safe {
+  will-change: transform, opacity;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-600,
+  .text-gray-700,
+  .text-gray-800 {
+    color: #000;
+  }
+  .border-gray-200,
+  .border-gray-300 {
+    border-color: #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .letter-a,
+  .letter-s,
+  .dot {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .handwriting-realistic::before,
+  .ink-effect,
+  .signature-style {
+    animation: none !important;
+    width: 100% !important;
+    background-size: 100% 100% !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Selection styles */
+::selection {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Optimized scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* Dark scrollbar for full-screen project view */
+.dark-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Reduce motion on mobile for better performance */
+  * {
+    transition-duration: 0.2s !important;
+  }
+
+  /* Hide hover previews on mobile */
+  .project-preview {
+    display: none;
+  }
+
+  /* Scale down handwriting on mobile */
+  .handwriting-svg {
+    width: 150px;
+    height: 75px;
+  }
+
+  .signature-style {
+    font-size: 4rem;
+  }
+
+  .ink-effect {
+    font-size: 3.5rem;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth circular animation */
+.circular-reveal {
+  will-change: clip-path;
+}
+
+/* Prevent body scroll when modal is open */
+.modal-open {
+  overflow: hidden;
+}
+
+/* Handwriting animation optimizations */
+.handwriting-container {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.letter-a,
+.letter-s {
+  will-change: stroke-dashoffset;
+}
+
+.dot {
+  will-change: opacity, transform;
+}
+
+@keyframes rgbGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rgb-animated {
+  background: linear-gradient(90deg, #ff0000, #00ff00, #0080ff, #ff0000);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbGradient 10s ease infinite;
+}
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
