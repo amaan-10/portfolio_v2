@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Header from "@/components/header";
-// import Hero from "@/components/hero/hero";
+import Hero from "@/components/hero/hero";
 import About from "@/components/about/about";
 import Projects from "@/components/projects/projects";
 import Tools from "@/components/tools/tools";
@@ -12,7 +12,6 @@ import Footer from "@/components/footer";
 import ContinuousAnimations from "@/components/continuous-animations";
 import ScrollProgress from "@/components/scroll-progress";
 import HandwritingAnimation from "@/components/loading";
-import Hero from "@/components/hero/hero";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
