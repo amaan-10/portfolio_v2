@@ -4,7 +4,7 @@ import type React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
