@@ -53,7 +53,6 @@ const Header = () => {
   };
 
   const [scrollSection, setScrollSection] = useState("");
-
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
@@ -76,7 +75,7 @@ const Header = () => {
         {
           root: null,
           rootMargin: "0px",
-          threshold: 0.6, // make it a bit more sensitive
+          threshold: 0.6,
         }
       );
 
@@ -91,7 +90,7 @@ const Header = () => {
           if (el) observer.unobserve(el);
         });
       };
-    }, 500); // small delay
+    }, 500);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -127,7 +126,6 @@ const Header = () => {
         </nav>
       </motion.header>
 
-      {/* Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -138,71 +136,70 @@ const Header = () => {
             exit="exit"
           >
             {/* Menu Layout */}
-            <div className="flex flex-col justify-between h-full">
-              <div className="flex flex-row justify-between items-center h-full mt-12 mx-40">
-                {/* Social Links */}
-                <div className="space-y-4 text-left flex flex-col items-start justify-center">
-                  <p className="text-2xl font-light text-gray-500">Social</p>
-                  {[
-                    { name: "GitHub", href: "https://github.com/amaan-10" },
-                    {
-                      name: "LinkedIn",
-                      href: "https://linkedin.com/in/10-amaan",
-                    },
-                    {
-                      name: "Twitter",
-                      href: "https://twitter.com/",
-                    },
-                  ].map((link, index) => (
-                    <motion.a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      className="text-3xl font-light hover:underline hover:cursor-pointer"
-                      variants={itemVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="hidden"
-                      custom={index}
-                    >
-                      {link.name}
-                    </motion.a>
-                  ))}
-                </div>
-
-                {/* Navigation Links */}
-                <div className="space-y-5 text-left flex flex-col items-start justify-center">
-                  <p className="text-2xl font-light text-gray-500">Menu</p>
-                  {["About", "Projects", "Tools", "Contact"].map((item, i) => (
-                    <motion.button
-                      key={item}
-                      className="text-4xl font-normal hover:cursor-pointer"
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.05 }}
-                      initial="hidden"
-                      animate="visible"
-                      exit="hidden"
-                      custom={i + 3}
-                      onClick={() =>
-                        scrollToSection(item.toLowerCase().replace(" ", ""))
-                      }
-                    >
-                      {item}
-                    </motion.button>
-                  ))}
-                </div>
+            <div className="flex flex-col-reverse gap-10 md:gap-0 h-[80%] space-y-8 md:space-y-0 md:mt-12 md:mx-40 md:flex-row md:items-center md:justify-between">
+              {/* Social Links */}
+              <div className="space-y-4 text-left flex flex-col items-start justify-center">
+                <p className="text-xl md:text-2xl font-light text-gray-500">
+                  Social
+                </p>
+                {[
+                  { name: "GitHub", href: "https://github.com/amaan-10" },
+                  {
+                    name: "LinkedIn",
+                    href: "https://linkedin.com/in/10-amaan",
+                  },
+                  { name: "Twitter", href: "https://twitter.com/" },
+                ].map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    className="text-2xl md:text-3xl font-light hover:underline hover:cursor-pointer"
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    custom={index}
+                  >
+                    {link.name}
+                  </motion.a>
+                ))}
               </div>
 
-              {/* Contact Section */}
-              <div className="text-left mt-10">
-                <p className="text-sm text-gray-500">Get in touch</p>
-                <motion.a
-                  href="mailto:amaanshaikh.gg@gmail.com"
-                  className="text-md font-medium hover:underline"
-                >
-                  amaanshaikh.gg@gmail.com
-                </motion.a>
+              {/* Navigation Links */}
+              <div className="space-y-5 text-left flex flex-col items-start justify-center">
+                <p className="text-xl md:text-2xl font-light text-gray-500">
+                  Menu
+                </p>
+                {["About", "Projects", "Tools", "Contact"].map((item, i) => (
+                  <motion.button
+                    key={item}
+                    className="text-3xl md:text-4xl font-normal hover:cursor-pointer"
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.05 }}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    custom={i + 3}
+                    onClick={() =>
+                      scrollToSection(item.toLowerCase().replace(" ", ""))
+                    }
+                  >
+                    {item}
+                  </motion.button>
+                ))}
               </div>
+            </div>
+
+            {/* Contact Section */}
+            <div className="text-left mt-10">
+              <p className="text-sm text-gray-500">Get in touch</p>
+              <motion.a
+                href="mailto:amaanshaikh.gg@gmail.com"
+                className="text-md font-medium hover:underline"
+              >
+                amaanshaikh.gg@gmail.com
+              </motion.a>
             </div>
           </motion.div>
         )}

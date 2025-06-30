@@ -1,8 +1,8 @@
 "use client";
 
 import type React from "react";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { easeOut, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -14,6 +14,14 @@ const Contact = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 768);
+    }
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -64,14 +72,22 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const mobileFade = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.4, ease: easeOut },
+  };
+
   return (
     <section id="contact" className="py-32 px-6 bg-black text-white">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? mobileFade.initial : { opacity: 0, y: 30 }}
+          whileInView={isMobile ? mobileFade.animate : { opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={
+            isMobile ? mobileFade.transition : { duration: 0.6, ease: easeOut }
+          }
         >
           <motion.h2
             className="text-4xl md:text-6xl font-black tracking-tight mb-8 relative group cursor-pointer"
@@ -88,10 +104,14 @@ const Contact = () => {
 
           <motion.p
             className="text-xl md:text-2xl text-gray-300 mb-12 font-light leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? mobileFade.initial : { opacity: 0, y: 20 }}
+            whileInView={isMobile ? mobileFade.animate : { opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            transition={
+              isMobile
+                ? mobileFade.transition
+                : { duration: 0.6, delay: 0.2, ease: easeOut }
+            }
           >
             Have an idea or just want to say hi? Let&apos;s connect.
           </motion.p>
@@ -99,10 +119,14 @@ const Contact = () => {
           <motion.form
             className="space-y-8"
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? mobileFade.initial : { opacity: 0, y: 20 }}
+            whileInView={isMobile ? mobileFade.animate : { opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            transition={
+              isMobile
+                ? mobileFade.transition
+                : { duration: 0.6, delay: 0.3, ease: easeOut }
+            }
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <motion.div

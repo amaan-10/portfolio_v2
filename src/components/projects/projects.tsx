@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import type React from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ExternalLink, Github, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -128,6 +129,7 @@ const Projects = ({ showAll = false }) => {
     (typeof projects)[0] | null
   >(null);
   const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
   const handleProjectClick = (
@@ -142,12 +144,18 @@ const Projects = ({ showAll = false }) => {
     setSelectedProject(project);
   };
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    }
+  }, []);
+
   return (
     <>
-      {showAll ? (
+      {showAll && (
         <motion.a
           href="/"
-          className="text-xl font-black tracking-tight cursor-pointer absolute pl-16 pt-4 z-50"
+          className="absolute left-4 z-50 sm:left-16 top-6 cursor-pointer"
           whileHover={{ scale: 1.05 }}
         >
           <svg
@@ -179,9 +187,8 @@ const Projects = ({ showAll = false }) => {
             />
           </svg>
         </motion.a>
-      ) : (
-        ""
       )}
+
       <section id="projects" className="py-32 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -249,6 +256,7 @@ const Projects = ({ showAll = false }) => {
                       ))}
                     </div>
                   </div>
+
                   <motion.button
                     onClick={(e) => handleProjectClick(project, e)}
                     className="flex items-center justify-center w-12 h-12 border-2 border-black group-hover:bg-black group-hover:text-white transition-all duration-300"
@@ -261,11 +269,12 @@ const Projects = ({ showAll = false }) => {
               </motion.div>
             ))}
           </div>
+
           {!showAll && (
             <div className="flex flex-col items-center gap-6 w-full">
               <div id="container">
-                <Link href="/projects" className="">
-                  <button className="learn-more ">
+                <Link href="/projects">
+                  <button className="learn-more">
                     <span className="circle !bg-transparent" aria-hidden="true">
                       <span className="icon2 arrow" />
                     </span>
@@ -343,7 +352,7 @@ const Projects = ({ showAll = false }) => {
                 <ExternalLink size={28} />
               </motion.a>
 
-              <div className="mx-auto px-8 py-16">
+              <div className="mx-auto px-8 py-20 md:py-16">
                 {/* Project Title */}
                 <motion.h1
                   className="text-6xl md:text-8xl font-black tracking-tight mb-16 text-left"
@@ -365,7 +374,7 @@ const Projects = ({ showAll = false }) => {
                       <h2 className="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4 border-b border-gray-700 pb-2">
                         DESCRIPTION
                       </h2>
-                      <p className="text-lg leading-relaxed text-gray-300">
+                      <p className="text-base md:text-lg leading-relaxed text-gray-300">
                         {selectedProject.fullDescription}
                       </p>
                     </div>
@@ -433,7 +442,7 @@ const Projects = ({ showAll = false }) => {
                     href={selectedProject.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-8 py-4 bg-white text-black font-bold tracking-wider uppercase hover:bg-gray-200 transition-colors"
+                    className="flex items-center text-sm sm:text-base gap-3 px-8 py-4 bg-white text-black font-bold tracking-wider uppercase hover:bg-gray-200 transition-colors"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -444,7 +453,7 @@ const Projects = ({ showAll = false }) => {
                     href={selectedProject.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-8 py-4 border-2 border-white text-white font-bold tracking-wider uppercase hover:bg-white hover:text-black transition-colors"
+                    className="flex items-center text-sm sm:text-base gap-3 px-8 py-4 border-2 border-white text-white font-bold tracking-wider uppercase hover:bg-white hover:text-black transition-colors"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

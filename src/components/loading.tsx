@@ -7,21 +7,23 @@ import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
 import Logo from "@/assets/logo";
 
 const HandwritingAnimation = () => {
-  const figureRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const pathname = usePathname();
 
   const runAnimation = () => {
-    if (!figureRef.current) return;
+    if (!containerRef.current || timelineRef.current?.isActive()) return;
 
     gsap.registerPlugin(DrawSVGPlugin);
     timelineRef.current?.kill();
+
+    // const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
     const tl = gsap.timeline({
       defaults: { ease: "power2.out", duration: 0.3 },
     });
 
-    tl.to(figureRef.current, {
+    tl.to(".logo-container", {
       autoAlpha: 1,
       duration: 0.3,
       ease: "sine.inOut",
@@ -58,23 +60,33 @@ const HandwritingAnimation = () => {
   };
 
   useEffect(() => {
-    const timeout = setTimeout(runAnimation, 100);
+    let ctx: gsap.Context;
+
+    const timeout = setTimeout(() => {
+      requestAnimationFrame(() => {
+        ctx = gsap.context(() => {
+          runAnimation();
+        }, containerRef);
+      });
+    }, 200);
 
     return () => {
       clearTimeout(timeout);
+      ctx?.revert();
       timelineRef.current?.kill();
     };
   }, [pathname]);
 
   return (
-    <main className="relative w-full h-screen bg-white overflow-hidden">
-      <figure
-        ref={figureRef}
-        className="absolute top-1/2 left-1/2 w-[90%] max-w-[960px] -translate-x-1/2 -translate-y-1/2 opacity-0"
-      >
+    <main
+      ref={containerRef}
+      className="relative w-full h-screen bg-white overflow-hidden"
+    >
+      <figure className="logo-container will-change-transform absolute top-1/2 left-1/2 w-[90%] max-w-[960px] -translate-x-1/2 -translate-y-1/2 opacity-0">
         <Logo />
       </figure>
-      <div className="full-stop absolute top-1/2 left-[71%] xs:left-[69%] sm:left-[62%] md:left-[60%] lg:left-[58%] xl:left-[57%] 2xl:left-[56%] w-5 h-5 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />{" "}
+
+      <div className="full-stop will-change-transform transform-gpu absolute top-1/2 left-[59%] sm:left-[62%] md:left-[60%] lg:left-[58%] xl:left-[57%] 2xl:left-[56%] w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />
     </main>
   );
 };

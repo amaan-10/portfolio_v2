@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <motion.div
-            className="text-center md:text-left"
+            className="self-start"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >

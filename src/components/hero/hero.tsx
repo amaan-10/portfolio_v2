@@ -6,14 +6,13 @@ import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
-
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.6], ["0%", "20%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const scrollToNext = () => {
     const aboutSection = document.getElementById("about");
@@ -22,26 +21,23 @@ const Hero = () => {
     }
   };
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
       <motion.div
-        className="text-xl font-black tracking-tight cursor-pointer absolute pl-16 pt-5 z-50"
+        className="absolute left-4 z-50 sm:left-16 top-6 cursor-pointer"
         whileHover={{ scale: 1.05 }}
         onClick={() => scrollToSection("hero")}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
           viewBox="0 0 267 209"
-          width="70"
-          height="54"
+          width={70}
+          height={54}
         >
           <path
             d="M0 0 C4.91619094 4.34694778 6.58629013 11.31975621 7.25 17.625 C6.875 20.0625 6.875 20.0625 4.875 22.0625 C2.87890625 22.08203125 2.87890625 22.08203125 0.875 21.0625 C-0.28515625 18.26171875 -0.28515625 18.26171875 -1.1875 14.75 C-2.681382 8.89785895 -2.681382 8.89785895 -6.125 4.0625 C-9.88701117 3.39369801 -11.73438805 3.85905628 -15.125 5.625 C-25.97119953 14.43753712 -31.13569025 26.87931729 -32.69140625 40.58984375 C-33.26059309 46.76580846 -33.30891919 52.9266158 -33.3125 59.125 C-33.33086914 60.80432617 -33.33086914 60.80432617 -33.34960938 62.51757812 C-33.36506454 71.30126489 -32.09029026 78.80204856 -29.125 87.0625 C-26.70232914 87.11417527 -26.70232914 87.11417527 -24.125 86.0625 C-21.48622503 80.91252442 -20.18249897 75.70065508 -19 70.0625 C-18.83113281 69.29421875 -18.66226563 68.5259375 -18.48828125 67.734375 C-16.52242752 58.632627 -15.87915314 49.83146727 -15.78320312 40.53710938 C-15.57246656 33.67101791 -15.57246656 33.67101791 -13.21484375 30.46484375 C-8.34628423 27.19790381 -1.80530794 27.41721702 3.875 28.0625 C7.71650278 29.84605486 9.3970919 30.86192757 10.97094727 34.81567383 C11.86424892 38.02388845 12.41470204 41.08560382 12.83984375 44.38671875 C13.00033203 45.58103516 13.16082031 46.77535156 13.32617188 48.00585938 C13.64783103 50.48224733 13.96816523 52.95880778 14.28710938 55.43554688 C15.5336302 64.6876118 17.2996974 73.4145623 20.875 82.0625 C21.535 82.0625 22.195 82.0625 22.875 82.0625 C24.63212452 76.24356558 26.37715658 70.42113383 28.11425781 64.59619141 C28.73983547 62.51267249 29.37968153 60.43344294 30.0234375 58.35546875 C32.38997394 50.52696622 34.00495359 42.65886912 35.39306641 34.60766602 C37.51451217 22.6389293 37.51451217 22.6389293 39.875 18.0625 C40.865 17.7325 41.855 17.4025 42.875 17.0625 C43.17975369 25.49966238 42.39824391 33.19502172 40.625 41.4375 C40.39611084 42.53312256 40.16722168 43.62874512 39.93139648 44.75756836 C31.81447602 82.89380664 31.81447602 82.89380664 20.4375 94.5625 C17.08816217 96.523088 15.71443545 96.80085297 11.875 96.0625 C0.71220857 91.49778975 -3.73748637 79.58935815 -8.125 69.1875 C-8.80145244 67.48301787 -9.47217336 65.77616992 -10.125 64.0625 C-10.27533691 64.59617187 -10.42567383 65.12984375 -10.58056641 65.6796875 C-16.4349913 86.1414114 -16.4349913 86.1414114 -24.4375 93.0625 C-30.45574768 95.30184797 -36.45559561 94.52795902 -42.28125 92.03125 C-49.17821677 88.40742 -53.55565364 82.74898694 -55.99609375 75.46118164 C-57.99017065 67.88717647 -58.55348459 60.87522174 -58.4375 53.0625 C-58.44072266 51.97710937 -58.44394531 50.89171875 -58.44726562 49.7734375 C-58.32994781 31.89846808 -53.97069308 15.56454186 -41 2.6875 C-30.46893372 -6.12349212 -11.59962212 -7.19176571 0 0 Z "
@@ -71,71 +67,49 @@ const Hero = () => {
         ref={ref}
         className="bg-black text-white overflow-hidden"
       >
-        <div className="min-h-[100vh] flex items-center justify-center px-6 relative">
+        <div className="min-h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
           <motion.div
-            className="max-w-4xl mx-auto text-center"
+            className="text-center max-w-2xl sm:max-w-4xl mx-auto"
             style={{ y, opacity }}
           >
-            <motion.div className="space-y-6">
+            <div className="space-y-6">
               <motion.h1
-                className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
-                whileInView={{ opacity: 1, y: 0 }}
-                initial={{ opacity: 0, y: 50 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: false }}
+                className="text-3xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <motion.span
-                  className="block"
-                  whileInView={{ opacity: 1, y: 0 }}
-                  initial={{ opacity: 0, y: 30 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  viewport={{ once: false }}
-                >
-                  TURNING VISION INTO
-                </motion.span>
-
-                <motion.span
-                  className="block"
-                  whileInView={{ opacity: 1, y: 0 }}
-                  initial={{ opacity: 0, y: 30 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: false }}
-                >
+                <div className="block">TURNING VISION INTO</div>
+                <div className="block">
                   <span className="rgb-animated">INTERACTIVE</span> EXPERIENCES
-                </motion.span>
+                </div>
               </motion.h1>
 
               <motion.p
-                className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-medium"
-                whileInView={{ opacity: 1, y: 0 }}
+                className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto font-medium leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: false }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Innovative web developer crafting <br /> unique user experiences
+                Innovative web developer crafting{" "}
+                <br className="hidden sm:block" /> unique user experiences
               </motion.p>
-            </motion.div>
+            </div>
           </motion.div>
 
           <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
-            whileInView={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: false }}
+            className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
             onClick={scrollToNext}
-            style={{ opacity }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="flex flex-col items-center space-y-2"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-1"
             >
-              <span className="text-xs font-bold text-gray-300 tracking-widest uppercase">
+              <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">
                 Scroll
               </span>
               <ChevronDown size={20} />

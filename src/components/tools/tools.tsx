@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const toolCategories = [
   {
@@ -58,17 +59,54 @@ const toolCategories = [
   },
 ];
 
+const desktopContainerVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const desktopToolVariants: Variants = {
+  hidden: { opacity: 0, x: -10 },
+  show: { opacity: 1, x: 0 },
+};
+
+const mobileCategoryVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+const mobileToolVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.3 } },
+};
+
 const Tools = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section id="tools" className="py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-4xl md:text-6xl font-black tracking-tight mb-16 text-center relative group cursor-pointer"
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          whileHover={{ scale: 1.02 }}
         >
           TOOLS I USE
           <motion.span
@@ -79,18 +117,16 @@ const Tools = () => {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {toolCategories.map((category, categoryIndex) => (
+          {toolCategories.map((category) => (
             <motion.div
               key={category.category}
               className="space-y-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: false, amount: 0.2 }}
-              transition={{
-                duration: 0.5,
-                delay: categoryIndex * 0.1,
-                ease: "easeOut",
-              }}
+              variants={
+                isMobile ? mobileCategoryVariants : desktopContainerVariants
+              }
             >
               <motion.h3
                 className="text-xl font-black tracking-wider uppercase border-b-2 border-black pb-2"
@@ -99,26 +135,23 @@ const Tools = () => {
               >
                 {category.category}
               </motion.h3>
+
               <div className="space-y-3">
-                {category.tools.map((tool, toolIndex) => (
+                {category.tools.map((tool) => (
                   <motion.div
                     key={tool.name}
                     className="group cursor-pointer"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: categoryIndex * 0.1 + toolIndex * 0.03,
-                      ease: "easeOut",
-                    }}
-                    whileHover={{ x: 5, scale: 1.02 }}
+                    variants={
+                      isMobile ? mobileToolVariants : desktopToolVariants
+                    }
                   >
                     <a
                       href={tool.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-800 font-medium group-hover:text-black group-hover:font-bold transition-all duration-200 underline underline-offset-4 decoration-transparent hover:decoration-black"
+                      className={`${
+                        isMobile ? "pl-4" : ""
+                      } text-gray-800 font-medium group-hover:text-black group-hover:font-bold transition-all duration-200 underline underline-offset-4 decoration-transparent hover:decoration-black`}
                     >
                       {tool.name}
                     </a>
