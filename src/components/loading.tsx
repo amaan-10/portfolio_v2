@@ -15,7 +15,7 @@ const HandwritingAnimation = () => {
     if (!figureRef.current) return;
 
     gsap.registerPlugin(DrawSVGPlugin);
-    timelineRef.current?.kill(); // clear previous
+    timelineRef.current?.kill();
 
     const tl = gsap.timeline({
       defaults: { ease: "power2.out", duration: 0.3 },
@@ -58,8 +58,7 @@ const HandwritingAnimation = () => {
   };
 
   useEffect(() => {
-    // Ensure SVG and DOM is mounted before running
-    const timeout = setTimeout(runAnimation, 100); // slight delay to allow elements to mount
+    const timeout = setTimeout(runAnimation, 100);
 
     return () => {
       clearTimeout(timeout);
@@ -68,15 +67,14 @@ const HandwritingAnimation = () => {
   }, [pathname]);
 
   return (
-    <main className="relative w-full h-screen bg-white">
+    <main className="relative w-full h-screen bg-white overflow-hidden">
       <figure
         ref={figureRef}
-        className="absolute top-1/2 left-1/2 w-[960px] -translate-x-1/2 -translate-y-1/2 opacity-0"
+        className="absolute top-1/2 left-1/2 w-[90%] max-w-[960px] -translate-x-1/2 -translate-y-1/2 opacity-0"
       >
         <Logo />
       </figure>
-
-      <div className="full-stop absolute top-1/2 left-[71%] xs:left-[69%] sm:left-[62%] md:left-[60%] lg:left-[58%] xl:left-[57%] 2xl:left-[56%] w-5 h-5 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />
+      <div className="full-stop absolute top-1/2 left-[71%] xs:left-[69%] sm:left-[62%] md:left-[60%] lg:left-[58%] xl:left-[57%] 2xl:left-[56%] w-5 h-5 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />{" "}
     </main>
   );
 };
