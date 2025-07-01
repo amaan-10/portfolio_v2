@@ -367,24 +367,29 @@ textarea:focus-visible {
   will-change: opacity, transform;
 }
 
-@keyframes rgbGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .rgb-animated {
-  background: linear-gradient(90deg, #ff0000, #00ff00, #0080ff, #ff0000);
-  background-size: 600% 600%;
+  background: linear-gradient(
+    90deg,
+    #ff0000,  /* Red */
+    #ff9900,  /* Orange */
+    #ffff00,  /* Yellow */
+    #00ff00,  /* Lime */
+    #00ffff,  /* Cyan */
+    #0000ff,  /* Blue */
+    #8000ff,  /* Purple */
+    #ff00ff,  /* Magenta */
+    #ff0000   /* Red (loop back) */
+  );
+  background-size: 1000% 1000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rgbGradient 10s ease infinite;
+  animation: rgbGradient 10s linear infinite;
+}
+
+@keyframes rgbGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 

@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -13,12 +14,15 @@ const Hero = () => {
 
   const y = useTransform(scrollYProgress, [0, 0.6], ["0%", "20%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const background = useTransform(
+    scrollYProgress,
+    [0, 0.8],
+    ["#000000", "#ffffff"]
+  );
 
   const scrollToNext = () => {
     const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
+    if (aboutSection) aboutSection.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToSection = (id: string) => {
@@ -62,12 +66,13 @@ const Hero = () => {
         </svg>
       </motion.div>
 
-      <section
+      <motion.section
         id="hero"
         ref={ref}
-        className="bg-black text-white overflow-hidden"
+        className="text-white overflow-hidden"
+        style={{ background }}
       >
-        <div className="min-h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
+        <div className="min-h-[97vh] md:min-h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
           <motion.div
             className="text-center max-w-2xl sm:max-w-4xl mx-auto"
             style={{ y, opacity }}
@@ -116,7 +121,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

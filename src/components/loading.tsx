@@ -17,44 +17,63 @@ const HandwritingAnimation = () => {
     gsap.registerPlugin(DrawSVGPlugin);
     timelineRef.current?.kill();
 
-    // const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out", duration: 0.3 },
-    });
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
     tl.to(".logo-container", {
       autoAlpha: 1,
       duration: 0.3,
       ease: "sine.inOut",
-    })
-      .from("svg #character-A-1 path", { drawSVG: 0, duration: 0.4 }, "+=0.2")
-      .from("svg #character-A-2 path", { drawSVG: 0, duration: 0.3 }, "-=0.2")
-      .from("svg #character-S-1 path", { drawSVG: 0, duration: 0.3 }, "+=0.1")
-      .from("svg #character-S-2 path", { drawSVG: 0, duration: 0.3 }, "-=0.15")
-      .from("svg #character-S-3 path", { drawSVG: 0, duration: 0.4 }, "-=0.1")
-      .to(
-        ".full-stop",
-        {
+    });
+
+    if (isMobile) {
+      // Sequential animation for mobile
+      tl.from("svg #character-A-1 path", { drawSVG: 0, duration: 0.5 })
+        .from("svg #character-A-2 path", { drawSVG: 0, duration: 0.4 })
+        .from("svg #character-S-1 path", { drawSVG: 0, duration: 0.4 })
+        .from("svg #character-S-2 path", { drawSVG: 0, duration: 0.4 })
+        .from("svg #character-S-3 path", { drawSVG: 0, duration: 0.5 })
+        .to(".full-stop", {
           opacity: 1,
           scale: 1,
           duration: 0.5,
           ease: "back.out(1.7)",
-        },
-        "+=0.3"
-      )
-      .to(".full-stop", {
-        scale: 100,
-        duration: 1.3,
-        ease: "expo.inOut",
-        onComplete: () => {
-          gsap.to(".full-stop", {
-            borderRadius: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        },
-      });
+        });
+    } else {
+      // Original overlapping animation for desktop
+      tl.from("svg #character-A-1 path", { drawSVG: 0, duration: 0.4 }, "+=0.2")
+        .from("svg #character-A-2 path", { drawSVG: 0, duration: 0.3 }, "-=0.2")
+        .from("svg #character-S-1 path", { drawSVG: 0, duration: 0.3 }, "+=0.1")
+        .from(
+          "svg #character-S-2 path",
+          { drawSVG: 0, duration: 0.3 },
+          "-=0.15"
+        )
+        .from("svg #character-S-3 path", { drawSVG: 0, duration: 0.4 }, "-=0.1")
+        .to(
+          ".full-stop",
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          },
+          "+=0.3"
+        )
+        .to(".full-stop", {
+          scale: 100,
+          duration: 1.3,
+          ease: "expo.inOut",
+          onComplete: () => {
+            gsap.to(".full-stop", {
+              borderRadius: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          },
+        });
+    }
 
     timelineRef.current = tl;
   };
