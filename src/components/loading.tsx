@@ -99,7 +99,7 @@ const HandwritingAnimation = () => {
   return (
     <main
       ref={containerRef}
-      className="relative w-full h-screen bg-white overflow-hidden"
+      className="relative w-full h-[91vh] md:h-screen bg-white overflow-hidden"
     >
       <figure className="logo-container will-change-transform absolute top-1/2 left-1/2 w-[150%] md:w-[90%] max-w-[960px] -translate-x-1/2 -translate-y-1/2 opacity-0">
         <Logo />
