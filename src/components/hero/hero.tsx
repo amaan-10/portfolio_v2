@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -103,22 +102,15 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
+            className="absolute bottom-32 sm:bottom-36 flex justify-center items-center cursor-pointer"
             onClick={scrollToNext}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center gap-1"
-            >
-              <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">
-                Scroll
-              </span>
-              <ChevronDown size={20} />
-            </motion.div>
+            <div className="chevron" />
+            <div className="chevron" />
+            <div className="chevron" />
           </motion.div>
         </div>
       </motion.section>
