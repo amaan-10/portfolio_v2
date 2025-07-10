@@ -102,7 +102,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-36 flex justify-center items-center cursor-pointer"
+            className="absolute bottom-40 md:bottom-36 flex justify-center items-center cursor-pointer"
             onClick={scrollToNext}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
