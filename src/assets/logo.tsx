@@ -6,11 +6,11 @@ const Logo = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    viewBox="0 0 1920 1080"
-    enableBackground="new 0 0 1920 1080"
+    viewBox="0 0 250 200"
+    enableBackground="new 0 0 250 200"
     xmlSpace="preserve"
   >
-    <g id="character-A" transform="translate(230,0)">
+    <g id="character-A" transform="translate(-645,-435)">
       <g id="character-A-1">
         <defs>
           <path
@@ -86,7 +86,7 @@ const Logo = () => (
         />
       </g>
     </g>
-    <g id="character-S" transform="translate(-300,0)">
+    <g id="character-S" transform="translate(-1175,-435)">
       <g id="character-S-1">
         <defs>
           <path

@@ -99,13 +99,12 @@ const HandwritingAnimation = () => {
   return (
     <main
       ref={containerRef}
-      className="relative w-full h-[91vh] md:h-screen bg-white overflow-hidden"
+      className="relative w-full h-[95vh] md:h-screen bg-white overflow-hidden"
     >
-      <figure className="logo-container will-change-transform absolute top-1/2 left-1/2 w-[150%] md:w-[90%] max-w-[960px] -translate-x-1/2 -translate-y-1/2 opacity-0">
+      <figure className="logo-container will-change-transform absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 w-20 sm:w-28 md:w-32">
         <Logo />
+        <div className="full-stop will-change-transform transform-gpu absolute top-1/2 -right-4 sm:-right-5 md:-right-7 w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />
       </figure>
-
-      <div className="full-stop will-change-transform transform-gpu absolute top-1/2 left-[64%] sm:left-[65%] md:left-[60%] lg:left-[58%] xl:left-[57%] 2xl:left-[56%] w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />
     </main>
   );
 };

@@ -71,7 +71,7 @@ const Hero = () => {
         className="text-white overflow-hidden"
         style={{ background }}
       >
-        <div className="min-h-[91vh] md:min-h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
+        <div className="min-h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
           <motion.div
             className="text-center max-w-2xl sm:max-w-4xl mx-auto"
             style={{ y, opacity }}
@@ -102,7 +102,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-32 sm:bottom-36 flex justify-center items-center cursor-pointer"
+            className="absolute bottom-36 flex justify-center items-center cursor-pointer"
             onClick={scrollToNext}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
