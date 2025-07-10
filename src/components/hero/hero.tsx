@@ -71,7 +71,7 @@ const Hero = () => {
         className="text-white overflow-hidden"
         style={{ background }}
       >
-        <div className="min-h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
+        <div className="h-[95vh] md:h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
           <motion.div
             className="text-center max-w-2xl sm:max-w-4xl mx-auto"
             style={{ y, opacity }}
@@ -95,8 +95,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Innovative web developer crafting{" "}
-                <br className="hidden sm:block" /> unique user experiences
+                Designing seamless, interactive journeys —
+                <br /> beyond just websites.
               </motion.p>
             </div>
           </motion.div>
