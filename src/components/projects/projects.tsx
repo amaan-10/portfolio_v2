@@ -92,6 +92,21 @@ const projects = [
   },
   {
     id: 5,
+    title: "RannNeeti",
+    description: "A DSA quest learning platform with interactive challenges.",
+    fullDescription:
+      "Developed RannNeeti, a DSA learning platform using Next.js, and MongoDB, offering interactive coding challenges and real-time progress tracking. Implemented a user-friendly interface with Tailwind CSS and integrated a custom-built REST API for seamless data management. Enhanced user engagement by 50% through gamified learning experiences and real-time feedback mechanisms.",
+    tech: ["TypeScript", "Next.js", "Tailwind", "MongoDB"],
+    frontendTech: ["TypeScript", "Next.js", "Tailwind"],
+    backendTech: ["REST API", "MongoDB"],
+    githubLink: "https://github.com/amaan-10/dsa-quest",
+    liveLink: "https://rannneeti.vercel.app/",
+    screenshots: ["/images/rannneeti-image.png"],
+    year: "2025",
+    category: "Full Stack",
+  },
+  {
+    id: 6,
     title: "CuraLink",
     description:
       "A secure healthcare platform with RBAC, smart scheduling, and automated insights to enhance patient-doctor collaboration.",
@@ -107,7 +122,7 @@ const projects = [
     category: "Full Stack",
   },
   {
-    id: 6,
+    id: 7,
     title: "Quiz Website",
     description:
       "A full-stack quiz website for creating, solving, and tracking quizzes, blending fun with education for all age groups.",
