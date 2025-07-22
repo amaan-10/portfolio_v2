@@ -110,7 +110,7 @@ const About = () => {
             experiences.
           </p>
 
-          <p className="text-base sm:text-lg md:text-2xl leading-relaxed font-light text-gray-800">
+          <p className="text-base sm:text-lg md:text-2xl leading-relaxed font-light text-gray-800 pb-8">
             From concept to deployment, I craft{" "}
             <span className="font-medium text-black hover:bg-gray-100 px-1 rounded transition-colors duration-200">
               scalable, high-quality solutions
