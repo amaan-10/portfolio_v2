@@ -27,6 +27,7 @@ import {
   SiPostman,
   SiCplusplus,
   SiFlask,
+  SiGooglegemini,
 } from "react-icons/si";
 
 const techStack = [
@@ -88,6 +89,7 @@ const techStack = [
   // Hosting
   { label: "Vercel", category: "Hosting", link: "https://vercel.com/" },
   { label: "OpenAI", category: "AI/ML", link: "https://openai.com/" },
+  { label: "Gemini-AI", category: "AI/ML", link: "https://ai.google/gemini/" },
 
   // Programming Languages
   { label: "Python", category: "Languages", link: "https://www.python.org/" },
@@ -120,6 +122,7 @@ const iconMap: Record<string, React.ReactElement> = {
   Cloudflare: <SiCloudflare className="h-5 w-5" />,
   "Digital Ocean": <SiDigitalocean className="h-5 w-5" />,
   OpenAI: <SiOpenai className="h-5 w-5" />,
+  "Gemini-AI": <SiGooglegemini className="h-5 w-5" />,
   "C++": <SiCplusplus className="h-5 w-5" />,
 };
 

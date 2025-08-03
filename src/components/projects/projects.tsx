@@ -52,6 +52,31 @@ const projects = [
   },
   {
     id: 3,
+    title: "Nyāyik",
+    description:
+      "A legal AI agent for personalized legal advice and document generation.",
+    fullDescription:
+      "Nyayik is an AI-powered legal advisory platform built with TypeScript, Next.js, Tailwind CSS, MongoDB, Pinecone for vector search, Gemini-AI and LangChain. It uses LLMs with RAG (Retrieval-Augmented Generation) to deliver instant legal answers, summarize laws, and provide context-aware case recommendations. Featuring a secure Node.js + MongoDB backend with encrypted session management, it supports text, document, and case ID inputs for rapid legal document parsing and summarization, reducing research time by 50%.",
+    tech: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind",
+      "MongoDB",
+      "Pinecone",
+      "Gemini-AI",
+      "LangChain",
+    ],
+    frontendTech: ["TypeScript", "Next.js", "Tailwind", "Framer Motion"],
+    backendTech: ["REST API", "MongoDB", "Gemini-AI", "LangChain", "Pinecone"],
+    githubLink: "https://github.com/amaan-10/ai-legal-agent",
+    liveLink: "https://nyayik.vercel.app",
+    screenshots: ["/images/nyayik-image.png"],
+    year: "2025",
+    category: "Full Stack w/ AI(RAG)",
+    ai: true,
+  },
+  {
+    id: 4,
     title: "SARA.mov",
     description: "Search Analysis Recommend Application for Movies.",
     fullDescription:
@@ -76,7 +101,7 @@ const projects = [
     ai: true,
   },
   {
-    id: 4,
+    id: 5,
     title: "EmployMee",
     description:
       "A smart MERN job portal with real-time tracking, AI job matching, and a responsive UI to streamline the hiring process.",
@@ -101,7 +126,7 @@ const projects = [
     ai: true,
   },
   {
-    id: 5,
+    id: 6,
     title: "RannNeeti",
     description: "A DSA quest learning platform with interactive challenges.",
     fullDescription:
@@ -117,7 +142,7 @@ const projects = [
     ai: false,
   },
   {
-    id: 6,
+    id: 7,
     title: "CuraLink",
     description:
       "A secure healthcare platform with RBAC, smart scheduling, and automated insights to enhance patient-doctor collaboration.",
@@ -134,7 +159,7 @@ const projects = [
     ai: false,
   },
   {
-    id: 7,
+    id: 8,
     title: "Quiz Website",
     description:
       "A full-stack quiz website for creating, solving, and tracking quizzes, blending fun with education for all age groups.",
