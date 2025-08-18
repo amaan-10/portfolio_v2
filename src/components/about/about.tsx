@@ -121,7 +121,7 @@ const About = () => {
           <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-200 w-full">
             <div>
               <h3 className="text-3xl font-black hover:scale-105 transition-transform duration-200">
-                5+
+                7+
               </h3>
               <p className="text-sm font-medium text-gray-600 uppercase tracking-wider">
                 Projects Completed
@@ -129,7 +129,7 @@ const About = () => {
             </div>
             <div>
               <h3 className="text-3xl font-black hover:scale-105 transition-transform duration-200">
-                10+
+                21+
               </h3>
               <p className="text-sm font-medium text-gray-600 uppercase tracking-wider">
                 Technologies in Use
