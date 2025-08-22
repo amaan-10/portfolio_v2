@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
+import { useMenu } from "@/context/MenuContext";
 
 const panelVariants: Variants = {
   initial: { x: "100%" },
@@ -40,9 +41,21 @@ const itemVariants: Variants = {
 const sections = ["hero", "about", "projects", "tools", "contact"];
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
   const { scrollY } = useScroll();
   const headerOpacity = useTransform(scrollY, [0, 100], [0.95, 1]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

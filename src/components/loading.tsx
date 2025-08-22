@@ -42,6 +42,8 @@ const HandwritingAnimation = () => {
       )
       .to(".full-stop", {
         scale: 100,
+        width: 100,
+        height: 100,
         duration: 1.3,
         ease: "expo.inOut",
         onComplete: () => {

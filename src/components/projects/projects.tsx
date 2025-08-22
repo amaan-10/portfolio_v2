@@ -18,40 +18,6 @@ import {
 const projects = [
   {
     id: 1,
-    title: "DePayment",
-    description:
-      "A Decentralized Payment Platform. Built a secure, real-time payment gateway with wallet features.",
-    fullDescription:
-      "Developed a secure, real-time payment gateway with digital wallet support for peer and merchant transactions. Engineered low-latency APIs using Python Flask and MongoDB, enabling instant wallet actions and reducing transaction lag by 35%. Designed a responsive React + Tailwind UI that boosted task efficiency by 40% and simplified QR payments. Integrated AES encryption and token-based auth to ensure 100% secure and reliable operations.",
-    tech: ["TypeScript", "Python", "Next.js", "Flask", "Tailwind", "MongoDB"],
-    frontendTech: ["TypeScript", "Next.js", "Tailwind"],
-    backendTech: ["Python", "Flask", "REST API", "MongoDB"],
-    githubLink: "https://github.com/amaan-10/decentralized-payment-gateway",
-    liveLink: "https://depayment.vercel.app/",
-    screenshots: ["/images/depay-image.png"],
-    year: "2025",
-    category: "Full Stack",
-    ai: false,
-  },
-  {
-    id: 2,
-    title: "SpendLess",
-    description:
-      "A finance platform with real-time insights, smart expense sharing, and gamified savings to boost financial habits and engagement.",
-    fullDescription:
-      "Built SpendLess, a smart finance management platform using TypeScript, Next.js, and MongoDB, enabling users to track budgets, categorize expenses, and gain investment insights through interactive visuals. Integrated real-time stock data via Finnhub API and developed Split It Up for effortless expense sharing. Designed an engaging custom dashboard that boosted user engagement by 35%, and introduced gamified savings challenges with goals, streaks, rewards, and a social leaderboard to drive motivation and retention.",
-    tech: ["TypeScript", "Next.js", "Tailwind", "MongoDB"],
-    frontendTech: ["TypeScript", "Next.js", "Tailwind"],
-    backendTech: ["Next.js", "Clerk", "REST API", "MongoDB"],
-    githubLink: "https://github.com/amaan-10/finance-manager",
-    liveLink: "https://spend-less.vercel.app/",
-    screenshots: ["/images/spend-less-image.png"],
-    year: "2024",
-    category: "Full Stack",
-    ai: false,
-  },
-  {
-    id: 3,
     title: "Nyāyik",
     description:
       "A legal AI agent for personalized legal advice and document generation.",
@@ -76,7 +42,7 @@ const projects = [
     ai: true,
   },
   {
-    id: 4,
+    id: 2,
     title: "SARA.mov",
     description: "Search Analysis Recommend Application for Movies.",
     fullDescription:
@@ -99,6 +65,41 @@ const projects = [
     year: "2024-25",
     category: "Full Stack w/ ML",
     ai: true,
+  },
+
+  {
+    id: 3,
+    title: "SpendLess",
+    description:
+      "A finance platform with real-time insights, smart expense sharing, and gamified savings to boost financial habits and engagement.",
+    fullDescription:
+      "Built SpendLess, a smart finance management platform using TypeScript, Next.js, and MongoDB, enabling users to track budgets, categorize expenses, and gain investment insights through interactive visuals. Integrated real-time stock data via Finnhub API and developed Split It Up for effortless expense sharing. Designed an engaging custom dashboard that boosted user engagement by 35%, and introduced gamified savings challenges with goals, streaks, rewards, and a social leaderboard to drive motivation and retention.",
+    tech: ["TypeScript", "Next.js", "Tailwind", "MongoDB"],
+    frontendTech: ["TypeScript", "Next.js", "Tailwind"],
+    backendTech: ["Next.js", "Clerk", "REST API", "MongoDB"],
+    githubLink: "https://github.com/amaan-10/finance-manager",
+    liveLink: "https://spend-less.vercel.app/",
+    screenshots: ["/images/spend-less-image.png"],
+    year: "2024",
+    category: "Full Stack",
+    ai: false,
+  },
+  {
+    id: 4,
+    title: "DePayment",
+    description:
+      "A Decentralized Payment Platform. Built a secure, real-time payment gateway with wallet features.",
+    fullDescription:
+      "Developed a secure, real-time payment gateway with digital wallet support for peer and merchant transactions. Engineered low-latency APIs using Python Flask and MongoDB, enabling instant wallet actions and reducing transaction lag by 35%. Designed a responsive React + Tailwind UI that boosted task efficiency by 40% and simplified QR payments. Integrated AES encryption and token-based auth to ensure 100% secure and reliable operations.",
+    tech: ["TypeScript", "Python", "Next.js", "Flask", "Tailwind", "MongoDB"],
+    frontendTech: ["TypeScript", "Next.js", "Tailwind"],
+    backendTech: ["Python", "Flask", "REST API", "MongoDB"],
+    githubLink: "https://github.com/amaan-10/decentralized-payment-gateway",
+    liveLink: "https://depayment.vercel.app/",
+    screenshots: ["/images/depay-image.png"],
+    year: "2025",
+    category: "Full Stack",
+    ai: false,
   },
   {
     id: 5,
@@ -202,6 +203,18 @@ const Projects = ({ showAll = false }) => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     }
   }, []);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedProject]);
 
   return (
     <>
