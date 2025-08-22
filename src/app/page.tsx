@@ -16,7 +16,7 @@ import HandwritingAnimation from "@/components/loading";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    document.title = "Porfolio | Amaan";
+    document.title = "Portfolio | Amaan";
   }, []);
 
   useEffect(() => {

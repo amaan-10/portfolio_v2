@@ -12,6 +12,100 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===== Global: apply to the whole page ===== */
+:root {
+  /* Tweak these if you like */
+  --sb-track: #000;        /* black track */
+  --sb-thumb: #fff;        /* white thumb */
+  --sb-thumb-hover: #e6e6e6;
+  --sb-thumb-active: #d4d4d4;
+  --sb-corner: #000;
+  --sb-width: 10px;        /* scrollbar thickness */
+  --sb-radius: 9999px;     /* pill/thumb radius */
+  --sb-border: 2px;        /* visual separation from track */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+
+/* WebKit (Chrome/Edge/Safari) */
+*::-webkit-scrollbar {
+  width: var(--sb-width);
+  height: var(--sb-width);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb);
+  border-radius: var(--sb-radius);
+  border: var(--sb-border) solid var(--sb-track); /* crisp white-on-black */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-thumb-hover);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: var(--sb-thumb-active);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--sb-corner);
+}
+
+/* ===== Per-element usage (opt-in) =====
+   Add class="bw-scrollbar" to any scrollable element if you don't want global styling.
+*/
+.bw-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+
+.bw-scrollbar::-webkit-scrollbar {
+  width: var(--sb-width);
+  height: var(--sb-width);
+}
+
+.bw-scrollbar::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+
+.bw-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb);
+  border-radius: var(--sb-radius);
+  border: var(--sb-border) solid var(--sb-track);
+}
+
+.bw-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-thumb-hover);
+}
+
+.bw-scrollbar::-webkit-scrollbar-thumb:active {
+  background: var(--sb-thumb-active);
+}
+
+.bw-scrollbar::-webkit-scrollbar-corner {
+  background: var(--sb-corner);
+}
+
+/* ===== Inverted variant: white track, black thumb =====
+   Use class="bw-scrollbar bw-scrollbar--invert"
+*/
+.bw-scrollbar--invert {
+  --sb-track: #fff;
+  --sb-thumb: #000;
+  --sb-thumb-hover: #0a0a0a;
+  --sb-thumb-active: #1a1a1a;
+  --sb-corner: #fff;
+}
+
+
 .rgb-animated {
   background: linear-gradient(
     90deg,
