@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import ProjectsInfoCard from "./ProjectsInfoCard";
 import ResumeCard from "./ResumeCard";
@@ -27,20 +26,13 @@ const fadeInUp = {
 
 // Mobile animation (simplified)
 const mobileFade = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: 30, x: 0 },
+  animate: { opacity: 1, y: 0, x: 0 },
   transition: { duration: 0.6, ease: "easeOut" as const },
 };
 
 const About = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
@@ -58,7 +50,7 @@ const About = () => {
           whileInView={isMobile ? mobileFade.animate : slideInLeft.animate}
           transition={isMobile ? mobileFade.transition : slideInLeft.transition}
           viewport={{ once: false, amount: 0.3 }}
-          className={`${isMobile ? "pl-14" : ""} space-y-12`}
+          className={`${isMobile ? "pl-5" : ""} space-y-12`}
         >
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extralight tracking-tight leading-tight">
@@ -99,7 +91,7 @@ const About = () => {
             isMobile ? mobileFade.transition : slideInRight.transition
           }
           viewport={{ once: false, amount: 0.3 }}
-          className={`${isMobile ? "mr-[30px]" : ""}`}
+          className={`${isMobile ? "pl-5" : ""}`}
         >
           <p className="text-base sm:text-lg md:text-2xl leading-relaxed font-light text-gray-800">
             I&apos;m a{" "}

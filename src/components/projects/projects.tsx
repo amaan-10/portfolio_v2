@@ -366,7 +366,18 @@ const Projects = ({ showAll = false }) => {
             </div>
 
             {!showAll && (
-              <div className="flex flex-col items-center gap-6 w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1,
+                  ease: "easeOut",
+                }}
+                whileHover={{ x: 10 }}
+                className="flex flex-col items-center gap-6 w-full"
+              >
                 <div id="container">
                   <Link href="/projects">
                     <button className="learn-more">
@@ -382,7 +393,7 @@ const Projects = ({ showAll = false }) => {
                     </button>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </section>
