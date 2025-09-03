@@ -1,8 +1,9 @@
 "use client";
 
 import { useMenu } from "@/context/MenuContext";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import PrismaticBurst from "../gradient/PrismaticBurst";
 
 const Hero = () => {
   const { isMenuOpen } = useMenu();
@@ -19,20 +20,6 @@ const Hero = () => {
       setDelayedIsMenuOpen(isMenuOpen);
     }
   }, [isMenuOpen]);
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 0.6], ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const background = useTransform(
-    scrollYProgress,
-    [0, 0.8],
-    ["#000000", "#ffffff"]
-  );
 
   const scrollToNext = () => {
     const aboutSection = document.getElementById("about");
@@ -82,40 +69,43 @@ const Hero = () => {
 
       <motion.section
         id="hero"
-        ref={ref}
-        className="text-white overflow-hidden"
-        style={{ background }}
+        className="relative text-white overflow-hidden h-[95vh] md:h-[100vh]"
       >
-        <div className="h-[95vh] md:h-[100vh] flex items-center justify-center px-4 sm:px-6 relative">
-          <motion.div
-            className="text-center max-w-2xl sm:max-w-4xl mx-auto"
-            style={{ y, opacity }}
-          >
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 z-0">
+          <PrismaticBurst
+            animationType="rotate3d"
+            intensity={1}
+            speed={0.5}
+            distort={1.0}
+            paused={false}
+            offset={{ x: 0, y: 0 }}
+            hoverDampness={0}
+            rayCount={24}
+            mixBlendMode="lighten"
+            colors={["#ff007a", "#4d3dff", "#ffffff"]}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-[95vh] md:h-[100vh] px-4 sm:px-6">
+          <motion.div className="text-center max-w-2xl sm:max-w-4xl mx-auto">
             <div className="space-y-6">
               <motion.h1
-                className="text-3xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
+                className="text-2xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <div className="block">TURNING VISION INTO</div>
+                <div className="block">TRANSFORMING IDEAS INTO </div>
                 <div className="block">
-                  <span className="rgb-animated">INTERACTIVE</span> EXPERIENCES
+                  <span className="rgb-animated">IMMERSIVE</span> REALITIES
                 </div>
               </motion.h1>
-
-              <motion.p
-                className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto font-medium leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                Designing seamless, interactive journeys —
-                <br /> beyond just websites.
-              </motion.p>
             </div>
           </motion.div>
 
+          {/* Scroll Chevron */}
           <motion.div
             className="absolute bottom-40 md:bottom-36 flex justify-center items-center cursor-pointer"
             onClick={scrollToNext}
