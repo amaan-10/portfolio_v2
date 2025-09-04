@@ -3,7 +3,7 @@
 import { useMenu } from "@/context/MenuContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import PrismaticBurst from "../gradient/PrismaticBurst";
+import DarkVeil from "../DarkVeil";
 
 const Hero = () => {
   const { isMenuOpen } = useMenu();
@@ -69,21 +69,18 @@ const Hero = () => {
 
       <motion.section
         id="hero"
-        className="relative text-white overflow-hidden h-[95vh] md:h-[100vh]"
+        className="relative text-white bg-black overflow-hidden h-[95vh] md:h-[100vh]"
       >
         {/* Animated Gradient Background */}
         <div className="absolute inset-0 z-0">
-          <PrismaticBurst
-            animationType="rotate3d"
-            intensity={1}
-            speed={0.5}
-            distort={1.0}
-            paused={false}
-            offset={{ x: 0, y: 0 }}
-            hoverDampness={0}
-            rayCount={24}
-            mixBlendMode="lighten"
-            colors={["#ff007a", "#4d3dff", "#ffffff"]}
+          <DarkVeil
+            hueShift={0}
+            noiseIntensity={0}
+            scanlineIntensity={0}
+            speed={0.75}
+            scanlineFrequency={0}
+            warpAmount={0}
+            resolutionScale={1.3}
           />
         </div>
 
@@ -92,7 +89,7 @@ const Hero = () => {
           <motion.div className="text-center max-w-2xl sm:max-w-4xl mx-auto">
             <div className="space-y-6">
               <motion.h1
-                className="text-2xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
+                className="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
