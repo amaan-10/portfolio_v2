@@ -122,7 +122,7 @@ html {
   background-size: 1000% 1000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rgbGradient 10s linear infinite;
+  animation: rgbGradient 15s linear infinite;
 }
 
 @keyframes rgbGradient {
