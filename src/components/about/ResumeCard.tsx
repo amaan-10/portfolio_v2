@@ -141,7 +141,7 @@ const ResumeCard = () => {
         href="/amaan-resume.pdf"
         // download="amaan-resume.pdf"
         target="_blank"
-        className="button dark"
+        className="button dark font-gothicWide font-medium"
       >
         <ul>
           <li>&#68;OWNLOAD CV</li>

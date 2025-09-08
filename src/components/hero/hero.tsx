@@ -3,7 +3,6 @@
 import { useMenu } from "@/context/MenuContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import DarkVeil from "../DarkVeil";
 
 const Hero = () => {
   const { isMenuOpen } = useMenu();
@@ -34,7 +33,7 @@ const Hero = () => {
   return (
     <>
       <motion.div
-        className="absolute left-4 z-50 sm:left-16 top-6 cursor-pointer"
+        className="absolute z-50 left-8 lg:left-16 top-8 cursor-pointer"
         whileHover={{ scale: 1.05 }}
         onClick={() => scrollToSection("hero")}
       >
@@ -71,40 +70,26 @@ const Hero = () => {
         id="hero"
         className="relative text-white bg-black overflow-hidden h-[95vh] md:h-[100vh]"
       >
-        {/* Animated Gradient Background */}
-        <div className="absolute inset-0 z-0">
-          <DarkVeil
-            hueShift={0}
-            noiseIntensity={0}
-            scanlineIntensity={0}
-            speed={0.75}
-            scanlineFrequency={0}
-            warpAmount={0}
-            resolutionScale={1.3}
-          />
-        </div>
-
         {/* Content */}
-        <div className="relative z-10 flex items-center justify-center h-[95vh] md:h-[100vh] px-4 sm:px-6">
-          <motion.div className="text-center max-w-2xl sm:max-w-4xl mx-auto">
+        <div className="relative z-10 flex flex-col justify-center h-[95vh] md:h-[100vh] px-8 lg:px-16">
+          <motion.div className="text-left pt-20">
             <div className="space-y-6">
               <motion.h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-white bg-clip-text text-transparent font-gothicSpatial font-black leading-tight"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <div className="block">TRANSFORMING IDEAS INTO </div>
+                <div className="block">Transforming ideas into </div>
                 <div className="block">
-                  <span className="rgb-animated">IMMERSIVE</span> REALITIES
+                  <span className="rgb-animated">Immersive</span> Realities
                 </div>
               </motion.h1>
             </div>
           </motion.div>
 
-          {/* Scroll Chevron */}
           <motion.div
-            className="absolute bottom-40 md:bottom-36 flex justify-center items-center cursor-pointer"
+            className="absolute bottom-40 md:bottom-36 right-16 lg:right-24 flex justify-center items-center self-end cursor-pointer"
             onClick={scrollToNext}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

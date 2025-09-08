@@ -8,12 +8,14 @@ const ProjectsInfoCard = () => {
         <Link href="/projects">
           <button className="learn-more">
             <span
-              className="circle border-[3px] border-solid border-black"
+              className="circle border-[3px] border-solid border-white"
               aria-hidden="true"
             >
               <span className="icon arrow" />
             </span>
-            <span className="button-text">MY WORK</span>
+            <span className="button-text font-gothicWide font-medium">
+              MY WORK
+            </span>
           </button>
         </Link>
       </div>

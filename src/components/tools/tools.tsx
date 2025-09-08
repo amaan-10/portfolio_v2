@@ -1,19 +1,21 @@
 "use client";
-
-import type React from "react";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { FaReact, FaNodeJs, FaGitAlt, FaFigma } from "react-icons/fa";
+import { motion, useInView } from "framer-motion";
+import { FaReact, FaGitAlt, FaFigma, FaNodeJs } from "react-icons/fa";
 import {
-  SiTailwindcss,
   SiNextdotjs,
   SiPython,
   SiJavascript,
   SiTypescript,
-  SiOpenai,
+  SiFastapi,
+  SiFlask,
   SiPostgresql,
   SiMongodb,
   SiExpress,
+  SiPostman,
+  SiTailwindcss,
+  SiBootstrap,
+  SiFramer,
   SiWebpack,
   SiVite,
   SiEslint,
@@ -21,14 +23,11 @@ import {
   SiNetlify,
   SiCloudflare,
   SiDigitalocean,
-  SiFramer,
-  SiBootstrap,
-  SiFastapi,
-  SiPostman,
-  SiCplusplus,
-  SiFlask,
+  SiOpenai,
   SiGooglegemini,
+  SiCplusplus,
 } from "react-icons/si";
+import type React from "react";
 
 const techStack = [
   // Frontend
@@ -59,7 +58,6 @@ const techStack = [
     category: "Frontend",
     link: "https://www.framer.com/motion/",
   },
-
   // Backend
   { label: "Node.js", category: "Backend", link: "https://nodejs.org/" },
   { label: "Express", category: "Backend", link: "https://expressjs.com/" },
@@ -79,18 +77,15 @@ const techStack = [
     link: "https://www.postgresql.org/",
   },
   { label: "MongoDB", category: "Backend", link: "https://www.mongodb.com/" },
-
   // Tools
   { label: "Git", category: "Tools", link: "https://git-scm.com/" },
   { label: "Postman", category: "Tools", link: "https://www.postman.com/" },
   { label: "Webpack", category: "Tools", link: "https://webpack.js.org/" },
   { label: "ESLint", category: "Tools", link: "https://eslint.org/" },
-
   // Hosting
   { label: "Vercel", category: "Hosting", link: "https://vercel.com/" },
   { label: "OpenAI", category: "AI/ML", link: "https://openai.com/" },
   { label: "Gemini-AI", category: "AI/ML", link: "https://ai.google/gemini/" },
-
   // Programming Languages
   { label: "Python", category: "Languages", link: "https://www.python.org/" },
   { label: "C++", category: "Languages", link: "https://isocpp.org/" },
@@ -131,8 +126,8 @@ const Tools = () => {
   const isInView = useInView(ref, { margin: "0px", amount: 0.2 });
 
   return (
-    <section id="tools" ref={ref} className="py-32 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section id="tools" ref={ref} className="py-32 px-6 relative bg-gray-900">
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -140,14 +135,13 @@ const Tools = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <motion.h2
-            className="text-5xl md:text-7xl font-black tracking-tight mb-6 relative inline-block"
+            className="text-5xl md:text-7xl font-black font-gothicSpatial tracking-tight mb-6 relative inline-block text-white"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
             TECH STACK
           </motion.h2>
         </motion.div>
-
         <div className="space-y-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {techStack.map((tech, index) => (
@@ -168,20 +162,20 @@ const Tools = () => {
                   transition: { delay: 0.2, duration: 0.1 },
                 }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="group relative border border-gray-200 rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:border-gray-300 bg-transparent hover:bg-gray-50/50 cursor-pointer"
+                className="group relative border border-gray-700 rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:border-gray-600 bg-gray-800 hover:bg-gray-750 cursor-pointer"
+                rel="noreferrer"
               >
                 <div className="flex flex-col items-center gap-3 text-center">
-                  <div className="transition-colors duration-300 text-gray-600 group-hover:text-gray-900">
+                  <div className="transition-colors duration-300 text-gray-300 group-hover:text-white">
                     {iconMap[tech.label] || (
-                      <span className="h-5 w-5 bg-gray-300 rounded" />
+                      <span className="h-5 w-5 bg-gray-600 rounded" />
                     )}
                   </div>
-                  <span className="text-sm font-medium leading-relaxed transition-colors duration-300 text-gray-700 group-hover:text-gray-900">
+                  <span className="text-sm font-medium font-gothicWide leading-relaxed transition-colors duration-300 text-gray-200 group-hover:text-white">
                     {tech.label}
                   </span>
                 </div>
-
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10" />
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-cyan-500/20 via-transparent to-purple-500/20" />
               </motion.a>
             ))}
           </div>

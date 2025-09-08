@@ -79,8 +79,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-black text-white">
-      <div className="max-w-4xl mx-auto">
+    <section id="contact" className="py-32 px-6 relative text-white">
+      <div className="max-w-6xl lg:pr-20 mx-auto relative z-10">
         <motion.div
           initial={isMobile ? mobileFade.initial : { opacity: 0, y: 30 }}
           whileInView={isMobile ? mobileFade.animate : { opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ const Contact = () => {
           }
         >
           <motion.h2
-            className="text-4xl md:text-6xl font-black tracking-tight mb-8 relative group cursor-pointer"
+            className="text-4xl md:text-6xl font-black font-gothicSpatial tracking-tight mb-8 relative group cursor-pointer"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.2 }}
           >
@@ -103,7 +103,7 @@ const Contact = () => {
           </motion.h2>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-12 font-light leading-relaxed"
+            className="text-xl md:text-2xl text-gray-300 mb-12 font-medium font-gothicWide leading-relaxed"
             initial={isMobile ? mobileFade.initial : { opacity: 0, y: 20 }}
             whileInView={isMobile ? mobileFade.animate : { opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -143,7 +143,7 @@ const Contact = () => {
                   placeholder="Name"
                   required
                 />
-                <label className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                <label className="absolute left-0 -top-3.5 text-gray-400 text-sm font-gothicWide transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                   Name
                 </label>
               </motion.div>
@@ -162,7 +162,7 @@ const Contact = () => {
                   placeholder="Email"
                   required
                 />
-                <label className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                <label className="absolute left-0 -top-3.5 text-gray-400 text-sm font-gothicWide transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                   Email
                 </label>
               </motion.div>
@@ -182,14 +182,14 @@ const Contact = () => {
                 placeholder="Message"
                 required
               />
-              <label className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+              <label className="absolute left-0 -top-3.5 text-gray-400 text-sm font-gothicWide transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                 Message
               </label>
             </motion.div>
 
             <motion.button
               type="submit"
-              className="group relative px-8 py-4 bg-white text-black font-bold tracking-widest uppercase overflow-hidden"
+              className="group relative px-8 py-4 bg-white text-black font-black font-gothicWide tracking-widest uppercase overflow-hidden"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}

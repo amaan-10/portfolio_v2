@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import ProjectsInfoCard from "./ProjectsInfoCard";
 import ResumeCard from "./ResumeCard";
 
 // Desktop animations
@@ -34,16 +32,12 @@ const mobileFade = {
 const About = () => {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <section id="about" className="py-24 sm:px-10 md:px-16 lg:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
+    <section
+      id="about"
+      className="py-24 sm:px-10 md:px-16 lg:px-20 relative text-white"
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 relative z-10">
         {/* Left Column */}
         <motion.div
           initial={isMobile ? mobileFade.initial : slideInLeft.initial}
@@ -53,34 +47,40 @@ const About = () => {
           className={`${isMobile ? "pl-5" : ""} space-y-12`}
         >
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extralight tracking-tight leading-tight">
-              Hi, I&apos;m{" "}
-              <span className="font-semibold hover:scale-[1.02] inline-block transition-transform duration-200">
+            <h2 className="text-[44px] sm:text-5xl xl:text-6xl tracking-tight leading-tight font-gothicSpatial font-black">
+              Hi, I am{"  "}
+              <span className="font-black block transition-transform duration-200">
                 Amaan Shaikh
               </span>
-              .
             </h2>
-            <p className="font-light text-base mt-4 italic">
-              Bachelor in Artificial Intelligence & Data Science
+            <p className="text-base mt-4 italic font-gothicWide font-medium">
+              Bachelor in Artificial Intelligence and Data Science
             </p>
           </div>
 
-          <motion.button
+          {/* <motion.button
             initial={isMobile ? mobileFade.initial : fadeInUp.initial}
             whileInView={isMobile ? mobileFade.animate : fadeInUp.animate}
             transition={isMobile ? mobileFade.transition : fadeInUp.transition}
             viewport={{ once: false, amount: 0.3 }}
             onClick={scrollToContact}
-            className="group flex items-center gap-2 bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium tracking-wide hover:bg-gray-800 transition-all duration-300"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            className="group flex items-center gap-2 bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-gothicWide font-medium tracking-wide hover:bg-gray-300 group-hover:scale-105 transition-all duration-300"
           >
             <ArrowUpRight
               size={20}
               className="group-hover:rotate-45 transition-transform duration-300"
             />
             Get in Touch
-          </motion.button>
+          </motion.button> */}
+          <motion.div
+            initial={isMobile ? mobileFade.initial : fadeInUp.initial}
+            whileInView={isMobile ? mobileFade.animate : fadeInUp.animate}
+            transition={isMobile ? mobileFade.transition : fadeInUp.transition}
+            viewport={{ once: false, amount: 0.3 }}
+            className="flex"
+          >
+            <ResumeCard />
+          </motion.div>
         </motion.div>
 
         {/* Right Column */}
@@ -93,37 +93,29 @@ const About = () => {
           viewport={{ once: false, amount: 0.3 }}
           className={`${isMobile ? "pl-5" : ""}`}
         >
-          <p className="text-base sm:text-lg md:text-2xl leading-relaxed font-light text-gray-800">
-            I&apos;m a{" "}
-            <span className="font-medium text-black hover:bg-gray-100 px-1 rounded transition-colors duration-200">
-              web developer
-            </span>{" "}
-            passionate about transforming ideas into meaningful digital
-            experiences.
-          </p>
-
-          <p className="text-base sm:text-lg md:text-2xl leading-relaxed font-light text-gray-800 pb-8">
-            From concept to deployment, I craft{" "}
-            <span className="font-medium text-black hover:bg-gray-100 px-1 rounded transition-colors duration-200">
-              scalable, high-quality solutions
-            </span>{" "}
+          <p className="text-2xl sm:text-3xl lg:text-3xl font-gothicWide font-medium leading-relaxed text-white">
+            I&apos;m a web developer passionate about transforming ideas into
+            meaningful digital experiences.
+            <br />
+            <br />
+            From concept to deployment, I craft scalable, high-quality solutions
             that deliver impact and elevate user experience.
           </p>
-
+          <br />
           <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-200 w-full">
             <div>
-              <h3 className="text-3xl font-black hover:scale-105 transition-transform duration-200">
+              <h3 className="text-3xl font-gothicWide font-black transition-transform duration-200">
                 7+
               </h3>
-              <p className="text-sm font-medium text-gray-600 uppercase tracking-wider">
+              <p className="text-base font-gothicWide font-medium text-gray-100 uppercase tracking-wider">
                 Projects Completed
               </p>
             </div>
             <div>
-              <h3 className="text-3xl font-black hover:scale-105 transition-transform duration-200">
+              <h3 className="text-3xl font-gothicWide font-black transition-transform duration-200">
                 21+
               </h3>
-              <p className="text-sm font-medium text-gray-600 uppercase tracking-wider">
+              <p className="text-base font-gothicWide font-medium text-gray-100 uppercase tracking-wider">
                 Technologies in Use
               </p>
             </div>
@@ -132,7 +124,7 @@ const About = () => {
       </div>
 
       {/* Cards */}
-      <motion.div
+      {/* <motion.div
         initial={isMobile ? mobileFade.initial : fadeInUp.initial}
         whileInView={isMobile ? mobileFade.animate : fadeInUp.animate}
         transition={{
@@ -141,11 +133,11 @@ const About = () => {
             : { ...fadeInUp.transition, delay: 0.1 }),
         }}
         viewport={{ once: false, amount: 0.3 }}
-        className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-16 w-full mt-10 flex-wrap"
+        className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-16 w-full mt-10 flex-wrap relative z-10"
       >
         <ProjectsInfoCard />
         <ResumeCard />
-      </motion.div>
+      </motion.div> */}
 
       {/* Divider */}
       <motion.div
@@ -153,9 +145,9 @@ const About = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="mt-24 flex justify-center"
+        className="mt-24 flex justify-center z-10 relative"
       >
-        <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-black to-transparent" />
+        <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent" />
       </motion.div>
     </section>
   );
