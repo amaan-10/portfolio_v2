@@ -1,4 +1,8 @@
-const Logo = () => (
+type LogoProps = {
+  color?: string;
+};
+
+const Logo = ({ color = "#231F20" }: LogoProps) => (
   <svg
     version="1.1"
     id="Layer_1"
@@ -39,7 +43,7 @@ const Logo = () => (
             clipPath:
               "url(#SVGID_00000076565911876307879240000012804802039011953844_)",
             fill: "none",
-            stroke: "#231F20",
+            stroke: color,
             strokeWidth: 40,
             strokeLinecap: "round",
             strokeLinejoin: "round",
@@ -75,7 +79,7 @@ const Logo = () => (
             clipPath:
               "url(#SVGID_00000057866652038593130940000010431533104366364813_)",
             fill: "none",
-            stroke: "#231F20",
+            stroke: color,
             strokeWidth: 40,
             strokeLinecap: "round",
             strokeLinejoin: "round",
@@ -109,7 +113,7 @@ const Logo = () => (
             clipPath:
               "url(#SVGID_00000136400348999649543870000000784896345488222111_)",
             fill: "none",
-            stroke: "#231F20",
+            stroke: color,
             strokeWidth: 40,
             strokeLinecap: "round",
             strokeLinejoin: "round",
@@ -143,7 +147,7 @@ const Logo = () => (
             clipPath:
               "url(#SVGID_00000136387809682612379350000013964582531207836838_)",
             fill: "none",
-            stroke: "#231F20",
+            stroke: color,
             strokeWidth: 40,
             strokeLinecap: "round",
             strokeLinejoin: "round",
@@ -177,7 +181,7 @@ const Logo = () => (
             clipPath:
               "url(#SVGID_00000069399131210571507280000013625774955360424110_)",
             fill: "none",
-            stroke: "#231F20",
+            stroke: color,
             strokeWidth: 40,
             strokeLinecap: "round",
             strokeLinejoin: "round",
