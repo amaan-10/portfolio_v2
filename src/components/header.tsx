@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useMenu } from "@/context/MenuContext";
@@ -38,7 +38,7 @@ const itemVariants: Variants = {
   }),
 };
 
-const sections = ["hero", "about", "projects", "tools", "contact"];
+// const sections = ["hero", "about", "projects", "tools", "contact"];
 
 const Header = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenu();
@@ -65,48 +65,48 @@ const Header = () => {
     }
   };
 
-  const [scrollSection, setScrollSection] = useState("");
-  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+  // const [scrollSection, setScrollSection] = useState("");
+  // const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      sections.forEach((id) => {
-        sectionRefs.current[id] = document.getElementById(id);
-      });
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     sections.forEach((id) => {
+  //       sectionRefs.current[id] = document.getElementById(id);
+  //     });
 
-      const refsSnapshot = { ...sectionRefs.current };
+  //     const refsSnapshot = { ...sectionRefs.current };
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const id = entry.target.id;
-            if (entry.isIntersecting) {
-              setScrollSection(id);
-            }
-          });
-        },
-        {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.6,
-        }
-      );
+  //     const observer = new IntersectionObserver(
+  //       (entries) => {
+  //         entries.forEach((entry) => {
+  //           const id = entry.target.id;
+  //           if (entry.isIntersecting) {
+  //             setScrollSection(id);
+  //           }
+  //         });
+  //       },
+  //       {
+  //         root: null,
+  //         rootMargin: "0px",
+  //         threshold: 0.6,
+  //       }
+  //     );
 
-      sections.forEach((id) => {
-        const el = refsSnapshot[id];
-        if (el) observer.observe(el);
-      });
+  //     sections.forEach((id) => {
+  //       const el = refsSnapshot[id];
+  //       if (el) observer.observe(el);
+  //     });
 
-      return () => {
-        sections.forEach((id) => {
-          const el = refsSnapshot[id];
-          if (el) observer.unobserve(el);
-        });
-      };
-    }, 500);
+  //     return () => {
+  //       sections.forEach((id) => {
+  //         const el = refsSnapshot[id];
+  //         if (el) observer.unobserve(el);
+  //       });
+  //     };
+  //   }, 500);
 
-    return () => clearTimeout(timeout);
-  }, []);
+  //   return () => clearTimeout(timeout);
+  // }, []);
 
   return (
     <>
@@ -117,14 +117,15 @@ const Header = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <nav className="max-w-7xl mx-auto px-6 py-6">
+        <nav className="px-8 lg:px-16 pt-8">
           <div className="flex justify-end items-center">
             <motion.button
-              className={`p-2 ${
-                scrollSection === "contact" || scrollSection === "hero"
-                  ? "text-white"
-                  : "text-black"
-              }`}
+              // className={`p-2 ${
+              //   scrollSection === "contact" || scrollSection === "hero"
+              //     ? "text-white"
+              //     : "text-black"
+              // }`}
+              className="p-2 text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -152,7 +153,7 @@ const Header = () => {
             <div className="flex flex-col-reverse gap-10 md:gap-0 h-[80%] space-y-8 md:space-y-0 md:mt-12 md:mx-40 md:flex-row md:items-center md:justify-between">
               {/* Social Links */}
               <div className="space-y-4 text-left flex flex-col items-start justify-center">
-                <p className="text-xl md:text-2xl font-light text-gray-500">
+                <p className="text-xl md:text-2xl font-light font-gothicStandard text-gray-500">
                   Social
                 </p>
                 {[
@@ -167,7 +168,7 @@ const Header = () => {
                     key={link.name}
                     href={link.href}
                     target="_blank"
-                    className="text-2xl md:text-3xl font-light hover:underline hover:cursor-pointer"
+                    className="text-2xl md:text-3xl text-black font-medium font-gothicStandard hover:underline hover:cursor-pointer"
                     variants={itemVariants}
                     initial="hidden"
                     animate="visible"
@@ -181,13 +182,13 @@ const Header = () => {
 
               {/* Navigation Links */}
               <div className="space-y-5 text-left flex flex-col items-start justify-center">
-                <p className="text-xl md:text-2xl font-light text-gray-500">
+                <p className="text-xl md:text-2xl font-light font-gothicStandard text-gray-500">
                   Menu
                 </p>
                 {["About", "Projects", "Tools", "Contact"].map((item, i) => (
                   <motion.button
                     key={item}
-                    className="text-3xl md:text-4xl font-normal hover:cursor-pointer"
+                    className="text-3xl md:text-4xl text-black font-medium font-gothicWide hover:cursor-pointer"
                     variants={itemVariants}
                     whileHover={{ scale: 1.05 }}
                     initial="hidden"
@@ -205,11 +206,11 @@ const Header = () => {
             </div>
 
             {/* Contact Section */}
-            <div className="text-left mt-10">
-              <p className="text-sm text-gray-500">Get in touch</p>
+            <div className="text-left mt-5">
+              <p className="text-md text-gray-500 font-light font-gothicStandard">Get in touch</p>
               <motion.a
                 href="mailto:amaanshaikh.gg@gmail.com"
-                className="text-md font-medium hover:underline"
+                className="text-md font-medium font-gothicWide text-black hover:underline"
               >
                 amaanshaikh.gg@gmail.com
               </motion.a>

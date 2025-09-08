@@ -98,13 +98,13 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="py-16 px-6 bg-white border-t border-gray-200"
+      className="py-16 px-6 relative"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="self-start" ref={containerRef}>
             <motion.a
@@ -114,11 +114,11 @@ const Footer = () => {
               transition={{ duration: 0.2 }}
             >
               <figure className="logo-container will-change-transform opacity-0 w-16 md:w-20">
-                <Logo />
-                <div className="full-stop will-change-transform transform-gpu absolute top-1/2 -right-3 md:-right-5 w-2 h-2 md:w-3 md:h-3 bg-black rounded-full opacity-0 scale-0 origin-center z-10" />
+                <Logo color="#FFFFFF" />
+                <div className="full-stop will-change-transform transform-gpu absolute top-1/2 -right-3 md:-right-5 w-2 h-2 md:w-3 md:h-3 bg-white rounded-full opacity-0 scale-0 origin-center z-10" />
               </figure>
             </motion.a>
-            <p className="text-gray-600 font-light mt-2 md:mt-4">
+            <p className="text-gray-200 font-extralight font-gothicSpatial mt-2 md:mt-4">
               &quot;Code is poetry written in logic.&quot;
             </p>
           </div>
@@ -136,7 +136,7 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-widest uppercase hover:text-gray-600 transition-colors"
+                  className="text-sm font-black font-gothicWide tracking-widest uppercase hover:text-gray-300 transition-colors"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
@@ -161,7 +161,7 @@ const Footer = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
         >
-          <p className="text-sm text-gray-500 font-light">
+          <p className="text-sm text-gray-200 font-extralight font-gothicSpatial">
             © 2025 Amaan&apos;s Portfolio. Crafted with precision.
           </p>
         </motion.div>
