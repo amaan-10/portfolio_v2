@@ -12,7 +12,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        gothicCompact: ["PP Right Gothic Compact", "sans-serif"], //900, 700, 200italic
+
+        gothicWide: ["PP Right Gothic Wide", "sans-serif"], //900, 500, 500italic
+
+        gothicSpatial: ["PP Right Gothic Spatial", "sans-serif"], //900, 900italic, 200
+
+        gothicTall: ["PP Right Gothic Tall", "sans-serif"], //400, 200
+
+        gothicTight: ["PP Right Gothic Tight", "sans-serif"], //500
+
+        gothicNarrow: ["PP Right Gothic Narrow", "sans-serif"], //300
+
+        gothicStandard: ["PP Right Gothic Standard", "sans-serif"], //300, 500, 500italic
       },
       colors: {
         black: "#000000",
