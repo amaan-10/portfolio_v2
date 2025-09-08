@@ -2,8 +2,133 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Compact */
+@font-face {
+  font-family: 'PP Right Gothic Compact';
+  src: url('../../public/fonts/PPRightGothic-CompactBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Compact';
+  src: url('../../public/fonts/PPRightGothic-CompactDark.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Compact';
+  src: url('../../public/fonts/PPRightGothic-CompactFineItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Wide */
+@font-face {
+  font-family: 'PP Right Gothic Wide';
+  src: url('../../public/fonts/PPRightGothic-WideBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Wide';
+  src: url('../../public/fonts/PPRightGothic-WideMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Wide';
+  src: url('../../public/fonts/PPRightGothic-WideMediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Spatial */
+@font-face {
+  font-family: 'PP Right Gothic Spatial';
+  src: url('../../public/fonts/PPRightGothic-SpatialBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Spatial';
+  src: url('../../public/fonts/PPRightGothic-SpatialBlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Spatial';
+  src: url('../../public/fonts/PPRightGothic-SpatialFine.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tall */
+@font-face {
+  font-family: 'PP Right Gothic Tall';
+  src: url('../../public/fonts/PPRightGothic-TallRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Tall';
+  src: url('../../public/fonts/PPRightGothic-TallFine.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tight */
+@font-face {
+  font-family: 'PP Right Gothic Tight';
+  src: url('../../public/fonts/PPRightGothic-TightMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Narrow */
+@font-face {
+  font-family: 'PP Right Gothic Narrow';
+  src: url('../../public/fonts/PPRightGothic-NarrowLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Standard */
+@font-face {
+  font-family: 'PP Right Gothic Standard';
+  src: url('../../public/fonts/PPRightGothic-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Standard';
+  src: url('../../public/fonts/PPRightGothic-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Right Gothic Standard';
+  src: url('../../public/fonts/PPRightGothic-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -228,7 +353,7 @@ html {
     margin: 0;
     width: 60px;
     height: 65px;
-    background: black;
+    background: white;
     border-radius: 1rem;
   }
   
@@ -273,8 +398,8 @@ html {
     right: 0.0rem;
     width: 0.625rem;
     height: 0.625rem;
-    border-top: 0.125rem solid white;
-    border-right: 0.125rem solid white;
+    border-top: 0.125rem solid black;
+    border-right: 0.125rem solid black;
     transform: rotate(45deg);
   }
 
@@ -298,8 +423,8 @@ html {
     right: 0;
     bottom: 0;
     padding: 0.75rem 0;
-    margin: 0 0 0 1.85rem;
-    color: black;
+    margin: 0 0 0 2.00rem;
+    color: white;
     font-weight: 800;
     line-height: 2.65;
     text-align: center;
@@ -311,7 +436,7 @@ html {
   }
   
   button.learn-more:hover .circle .icon.arrow {
-    background: white;
+    background: black;
     transform: translate(1rem, 0);
   }
 
@@ -321,7 +446,7 @@ html {
   }
   
   button.learn-more:hover .button-text {
-    color: white;
+    color: black;
   }
   
   @supports (display: grid) {
@@ -347,13 +472,13 @@ html {
   
   .button {
     --background: transparent;
-    --rectangle: black;
+    --rectangle: white;
     --success: #16a34a; 
-    --text: black;
-    --arrow: white;
+    --text: white;
+    --arrow: black;
     --checkmark: white;
     --shadow: rgba(10, 22, 50, 0.24);
-    border: 3px solid black;
+    border: 3px solid white;
     display: flex;
     overflow: hidden;
     text-decoration: none;
@@ -402,7 +527,7 @@ html {
     width: 60px;
     height: 60px;
     background: var(--rectangle);
-    border-left: 3px solid black;
+    border-left: 3px solid white;
   }
   
   .button > div::before,
@@ -581,7 +706,7 @@ html {
  top: 0;
  height: 100%;
  width: 50%;
- background: #ecf0f1;
+ background: #fff;
 }
 
 .chevron:before {

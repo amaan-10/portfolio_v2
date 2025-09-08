@@ -9,7 +9,7 @@ import Projects from "@/components/projects/projects";
 import Tools from "@/components/tools/tools";
 import Contact from "@/components/contact/contact";
 import Footer from "@/components/footer";
-import ContinuousAnimations from "@/components/continuous-animations";
+import BGAnimations from "@/components/bg-animations";
 import ScrollProgress from "@/components/scroll-progress";
 import HandwritingAnimation from "@/components/loading";
 
@@ -31,13 +31,13 @@ export default function Home() {
       ) : (
         <motion.div
           key="main"
-          className="min-h-screen bg-white text-black overflow-x"
+          className="min-h-screen bg-black text-white overflow-x"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           <ScrollProgress />
-          <ContinuousAnimations />
+          <BGAnimations />
           <Header />
           <main>
             <Hero />
