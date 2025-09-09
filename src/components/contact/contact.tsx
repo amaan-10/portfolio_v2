@@ -3,7 +3,7 @@
 import type React from "react";
 import { easeOut, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Send } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -203,7 +203,7 @@ const Contact = () => {
               />
               <span className="relative z-10 flex items-center gap-2">
                 {isSubmitted ? "Message Sent!" : "Send Message"}
-                <Send size={16} />
+                {isSubmitted ? "" : <ArrowUpRight size={20} />}
               </span>
             </motion.button>
           </motion.form>

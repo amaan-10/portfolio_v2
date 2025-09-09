@@ -102,7 +102,7 @@ const About = () => {
             that deliver impact and elevate user experience.
           </p>
           <br />
-          <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-200 w-full">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 pt-8 border-t border-gray-200 w-full">
             <div>
               <h3 className="text-3xl font-gothicWide font-black transition-transform duration-200">
                 7+
