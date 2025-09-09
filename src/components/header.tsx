@@ -206,11 +206,13 @@ const Header = () => {
             </div>
 
             {/* Contact Section */}
-            <div className="text-left mt-5">
-              <p className="text-md text-gray-500 font-light font-gothicStandard">Get in touch</p>
+            <div className="text-left mt-10 md:mt-5">
+              <p className="text-xl text-gray-500 font-light font-gothicStandard">
+                Get in touch
+              </p>
               <motion.a
                 href="mailto:amaanshaikh.gg@gmail.com"
-                className="text-md font-medium font-gothicWide text-black hover:underline"
+                className="text-lg font-medium font-gothicWide text-black hover:underline"
               >
                 amaanshaikh.gg@gmail.com
               </motion.a>
