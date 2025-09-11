@@ -126,7 +126,7 @@ const Tools = () => {
   const isInView = useInView(ref, { margin: "0px", amount: 0.2 });
 
   return (
-    <section id="tools" ref={ref} className="py-32 px-6 relative bg-gray-900">
+    <section id="tools" ref={ref} className="py-32 px-6 relative bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"
@@ -162,7 +162,7 @@ const Tools = () => {
                   transition: { delay: 0.2, duration: 0.1 },
                 }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="group relative border border-gray-700 rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:border-gray-600 bg-gray-800 hover:bg-gray-750 cursor-pointer"
+                className="group relative border border-gray-700 rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:border-gray-600 bg-gray-900 hover:bg-gray-800 cursor-pointer"
                 rel="noreferrer"
               >
                 <div className="flex flex-col items-center gap-3 text-center">
