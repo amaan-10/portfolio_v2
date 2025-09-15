@@ -49,7 +49,16 @@ const About = () => {
           <div>
             <h2 className="text-[44px] sm:text-5xl xl:text-6xl tracking-tight leading-tight font-gothicSpatial font-black">
               Hi, I am{"  "}
-              <span className="font-black block transition-transform duration-200">
+              <span
+                className={`text-[#b5b5b5a3] bg-clip-text inline-block font-black transition-transform duration-200 animate-shine`}
+                style={{
+                  backgroundImage:
+                    "linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0) 50%)",
+                  backgroundSize: "200% 100%",
+                  WebkitBackgroundClip: "text",
+                  animationDuration: "3s",
+                }}
+              >
                 Amaan Shaikh
               </span>
             </h2>

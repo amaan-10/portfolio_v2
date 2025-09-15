@@ -357,37 +357,37 @@ const Projects = ({ showAll = false }) => {
                     </div>
 
                     <div className="hidden mr-5 overflow-hidden md:block">
-                          {isHovered && (
-                          <motion.svg
-                            width="48"
-                            height="48"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            initial={{ opacity: 0, x: "-80%", y: "80%" }}
-                            animate={{
-                              opacity: [1],
-                              x: ["-80%", "80%"],
-                              y: ["80%", "-80%"],
-                            }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              repeatType: "loop",
-                              ease: "linear",
-                            }}
-                            className="group-hover:block hidden"
-                          >
-                            <path
-                              d="M6 18L18 6M18 6H10M18 6V14"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </motion.svg>
-                          )}
-                        </div>
+                      {isHovered && (
+                        <motion.svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          initial={{ opacity: 0, x: "-80%", y: "80%" }}
+                          animate={{
+                            opacity: [1],
+                            x: ["-80%", "80%"],
+                            y: ["80%", "-80%"],
+                          }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "linear",
+                          }}
+                          className="group-hover:block hidden"
+                        >
+                          <path
+                            d="M6 18L18 6M18 6H10M18 6V14"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </motion.svg>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -415,7 +415,7 @@ const Projects = ({ showAll = false }) => {
                       >
                         <span className="icon2 arrow" />
                       </span>
-                      <span className="button-text !text-[#2563eb] font-gothicWide font-medium">
+                      <span className="button-text !text-[#66B2FF] font-gothicWide font-medium">
                         Show More
                       </span>
                     </button>
@@ -489,10 +489,10 @@ const Projects = ({ showAll = false }) => {
                   <ExternalLink size={28} />
                 </motion.a>
 
-                <div className="mx-auto px-8 py-20 md:py-16">
+                <div className="mx-auto pt-24 sm:pt-0 px-8 py-20 md:py-16">
                   {/* Project Title */}
                   <motion.h1
-                    className="text-6xl md:text-8xl font-black font-gothicSpatial tracking-tight mb-16 text-left"
+                    className="text-5xl sm:text-6xl md:text-8xl font-black font-gothicSpatial tracking-tight mb-16 text-left"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
