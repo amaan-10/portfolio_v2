@@ -372,7 +372,7 @@ html {
     top: 0;
     bottom: 0;
     margin: auto;
-    background: #2563eb;
+    background: #66B2FF;
   }
   
   button.learn-more .circle .icon.arrow {
@@ -410,8 +410,8 @@ html {
     right: 0.0rem;
     width: 0.625rem;
     height: 0.625rem;
-    border-top: 0.125rem solid #2563eb;
-    border-right: 0.125rem solid #2563eb;
+    border-top: 0.125rem solid #66B2FF;
+    border-right: 0.125rem solid #66B2FF;
     transform: rotate(45deg);
   }
   
@@ -441,7 +441,7 @@ html {
   }
 
   button.learn-more:hover .circle .icon2.arrow {
-    background: #2563eb;
+    background: #66B2FF;
     transform: translate(1rem, 0);
   }
   
