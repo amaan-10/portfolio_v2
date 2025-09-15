@@ -82,8 +82,15 @@ module.exports = {
           5: "hsl(var(--chart-5))",
         },
       },
+      keyframes: {
+        shine: {
+          "0%": { "background-position": "100%" },
+          "100%": { "background-position": "-100%" },
+        },
+      },
       animation: {
         pulse: "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        shine: "shine 5s linear infinite",
       },
       borderRadius: {
         lg: "var(--radius)",
