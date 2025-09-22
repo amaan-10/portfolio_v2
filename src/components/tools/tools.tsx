@@ -126,7 +126,7 @@ const Tools = () => {
   const isInView = useInView(ref, { margin: "0px", amount: 0.2 });
 
   return (
-    <section id="tools" ref={ref} className="py-32 px-6 relative bg-black">
+    <section id="tools" ref={ref} className="py-32 px-6 relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"

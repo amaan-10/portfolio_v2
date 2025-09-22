@@ -68,7 +68,7 @@ const Hero = () => {
 
       <motion.section
         id="hero"
-        className="relative text-white bg-black overflow-hidden h-[95vh] md:h-[100vh]"
+        className="relative text-white overflow-hidden h-[95vh] md:h-[100vh]"
       >
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center h-[95vh] md:h-[100vh] px-8 lg:px-16">
