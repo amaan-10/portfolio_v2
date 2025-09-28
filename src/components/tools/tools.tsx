@@ -28,6 +28,7 @@ import {
   SiCplusplus,
 } from "react-icons/si";
 import type React from "react";
+import "./tools.css";
 
 const techStack = [
   // Frontend
@@ -162,7 +163,7 @@ const Tools = () => {
                   transition: { delay: 0.2, duration: 0.1 },
                 }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="group relative border border-gray-700 rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:border-gray-600 bg-gray-900 hover:bg-gray-800 cursor-pointer"
+                className="group bttn bttn--glass"
                 rel="noreferrer"
               >
                 <div className="flex flex-col items-center gap-3 text-center">
@@ -171,11 +172,11 @@ const Tools = () => {
                       <span className="h-5 w-5 bg-gray-600 rounded" />
                     )}
                   </div>
-                  <span className="text-sm font-medium font-gothicWide leading-relaxed transition-colors duration-300 text-gray-200 group-hover:text-white">
+                  <span className="bttn__label font-gothicWide">
                     {tech.label}
                   </span>
                 </div>
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-cyan-500/20 via-transparent to-purple-500/20" />
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-cyan-500/30 via-transparent to-purple-500/30" />
               </motion.a>
             ))}
           </div>
