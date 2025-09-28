@@ -52,6 +52,7 @@ const BGAnimations = ({ blurValue = 0 }: BlurProps) => {
           loop
           muted
           playsInline
+          preload="auto"
         />
       </div>
     </>

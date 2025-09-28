@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <>
       <motion.div
-        className="absolute z-50 left-8 lg:left-16 top-8 cursor-pointer"
+        className="absolute z-50 left-6 lg:left-16 top-8 cursor-pointer"
         whileHover={{ scale: 1.05 }}
         onClick={() => scrollToSection("hero")}
       >
@@ -71,7 +71,7 @@ const Hero = () => {
         className="relative text-white overflow-hidden h-[95vh] md:h-[100vh]"
       >
         {/* Content */}
-        <div className="relative z-10 flex flex-col justify-center h-[95vh] md:h-[100vh] px-8 lg:px-16">
+        <div className="relative z-10 flex flex-col justify-center h-[95vh] md:h-[100vh] px-6 lg:px-16">
           <motion.div className="text-left pt-20">
             <div className="space-y-6">
               <motion.h1

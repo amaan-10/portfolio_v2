@@ -117,7 +117,7 @@ const Header = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <nav className="px-8 lg:px-16 pt-8">
+        <nav className="px-6 lg:px-16 pt-8">
           <div className="flex justify-end items-center">
             <motion.button
               // className={`p-2 ${
