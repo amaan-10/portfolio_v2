@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ResumeCard from "./ResumeCard";
-
+import GlassButton from "./glass-button";
 // Desktop animations
 const slideInLeft = {
   initial: { opacity: 0, x: -30 },
@@ -88,7 +87,25 @@ const About = () => {
             viewport={{ once: false, amount: 0.3 }}
             className="flex"
           >
-            <ResumeCard />
+            {/* <button
+              className="relative px-10 py-3 rounded-full text-lg font-medium text-white shadow-md backdrop-blur-md bg-transparent border border-white/50 hover:scale-105 transition-all duration-300 font-gothicWide"
+              style={{
+                boxShadow:
+                  "inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px rgba(255,255,255,0.6), 0 4px 8px rgba(0,0,0,0.15)",
+              }}
+            >
+              <span className="relative z-10">Download CV</span>
+              <span
+                className="absolute inset-0 flex items-center justify-center text-gray-400/50"
+                style={{
+                  transform: "translateY(18px) scaleY(-1)",
+                  opacity: 0.3,
+                }}
+              >
+                Download CV
+              </span>
+            </button> */}
+            <GlassButton />
           </motion.div>
         </motion.div>
 
@@ -100,7 +117,7 @@ const About = () => {
             isMobile ? mobileFade.transition : slideInRight.transition
           }
           viewport={{ once: false, amount: 0.3 }}
-          className={`${isMobile ? "pl-5" : ""}`}
+          className={`${isMobile ? "px-5" : ""}`}
         >
           <p className="text-2xl sm:text-3xl lg:text-3xl font-gothicWide font-medium leading-relaxed text-white">
             I&apos;m a web developer passionate about transforming ideas into
@@ -116,7 +133,7 @@ const About = () => {
               <h3 className="text-3xl font-gothicWide font-black transition-transform duration-200">
                 7+
               </h3>
-              <p className="text-base font-gothicWide font-medium text-gray-100 uppercase tracking-wider">
+              <p className="text-[15px] font-gothicWide font-medium text-gray-100 uppercase tracking-wider">
                 Projects Completed
               </p>
             </div>
@@ -124,7 +141,7 @@ const About = () => {
               <h3 className="text-3xl font-gothicWide font-black transition-transform duration-200">
                 21+
               </h3>
-              <p className="text-base font-gothicWide font-medium text-gray-100 uppercase tracking-wider">
+              <p className="text-[15px] font-gothicWide font-medium text-gray-100 uppercase tracking-wider">
                 Technologies in Use
               </p>
             </div>
