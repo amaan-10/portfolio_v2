@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useEffect } from "react";
-import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useMenu } from "@/context/MenuContext";
 
@@ -119,7 +118,7 @@ const Header = () => {
       >
         <nav className="px-6 lg:px-16 pt-8">
           <div className="flex justify-end items-center">
-            <motion.button
+            {/* <motion.button
               // className={`p-2 ${
               //   scrollSection === "contact" || scrollSection === "hero"
               //     ? "text-white"
@@ -135,6 +134,45 @@ const Header = () => {
               ) : (
                 <Menu size={24} />
               )}
+            </motion.button> */}
+            <motion.button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="cursor-pointer flex-none w-[40px] h-[40px] overflow-hidden relative transform-none origin-center "
+              data-framer-name="Icon"
+              data-highlight="true"
+            >
+              <motion.div
+                className="absolute w-[20px] h-[2px] left-[calc(65%-10px)] overflow-hidden flex-none"
+                animate={{
+                  top: isMenuOpen ? "calc(50% - 2px)" : "calc(60% - 2px)",
+                  rotate: isMenuOpen ? -45 : 0,
+                  borderRadius: isMenuOpen ? "50% / 501.099%" : "10px",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                style={{
+                  backgroundColor: isMenuOpen ? "black" : "white",
+                  transformOrigin: "50% 50% 0px",
+                  willChange: "transform",
+                  transition: "background-color 0.5s ease 0.3s",
+                }}
+              />
+
+              {/* Top Line */}
+              <motion.div
+                className="absolute flex-none w-[20px] h-[2px] overflow-hidden left-[calc(65%-10px)] top-[calc(40%-1px)] bg-[rgb(17,17,17)] rounded-[10px] origin-center"
+                animate={{
+                  top: isMenuOpen ? "calc(50% - 2px)" : "calc(40% - 2px)",
+                  rotate: isMenuOpen ? 45 : 0,
+                  borderRadius: isMenuOpen ? "50% / 501.099%" : "10px",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                style={{
+                  backgroundColor: isMenuOpen ? "black" : "white",
+                  transformOrigin: "50% 50% 0px",
+                  willChange: "transform",
+                  transition: "background-color 0.5s ease 0.3s",
+                }}
+              />
             </motion.button>
           </div>
         </nav>
