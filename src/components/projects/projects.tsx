@@ -307,9 +307,7 @@ const Projects = ({ showAll = false }) => {
                         <span className="text-sm text-gray-300 font-medium font-gothicWide">
                           {project.year}
                         </span>
-                        <span className="px-2 py-1 text-xs font-medium font-gothicWide bg-black border border-gray-500 rounded">
-                          {project.category}
-                        </span>
+
                         {project.ai && (
                           <Tooltip>
                             <TooltipTrigger>
@@ -334,10 +332,49 @@ const Projects = ({ showAll = false }) => {
                               </span>
                             </TooltipTrigger>
                             <TooltipContent>
-                              <p>AI Integration</p>
+                              <p className="font-gothicWide font-medium">
+                                AI Integration
+                              </p>
                             </TooltipContent>
                           </Tooltip>
                         )}
+                        <div className="hidden mr-5 overflow-hidden md:block">
+                          {isHovered && (
+                            <motion.svg
+                              width="40"
+                              height="40"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                              initial={{
+                                opacity: 0,
+                                x: "-80%",
+                                y: "80%",
+                                rotate: -90,
+                              }}
+                              animate={{
+                                opacity: [1],
+                                x: ["-80%", "80%"],
+                                y: ["80%", "-80%"],
+                              }}
+                              transition={{
+                                duration: 1,
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                ease: "linear",
+                              }}
+                              className="group-hover:block hidden"
+                              fill="none"
+                              stroke="var(--token-21001bb2-95fc-4899-93cf-7cca6736a1a2, rgb(250, 250, 247))"
+                              strokeWidth="2.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              style={{ width: "100%", height: "100%" }}
+                            >
+                              <line x1="7" y1="7" x2="17" y2="17"></line>
+                              <polyline points="17 7 17 17 7 17"></polyline>
+                            </motion.svg>
+                          )}
+                        </div>
                       </div>
                       <p className="text-lg text-gray-300 mb-4 font-gothicWide font-medium leading-relaxed">
                         {project.description}
@@ -354,45 +391,6 @@ const Projects = ({ showAll = false }) => {
                           </motion.span>
                         ))}
                       </div>
-                    </div>
-
-                    <div className="hidden mr-5 overflow-hidden md:block">
-                      {isHovered && (
-                        <motion.svg
-                          width="48"
-                          height="48"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          initial={{
-                            opacity: 0,
-                            x: "-80%",
-                            y: "80%",
-                            rotate: -90,
-                          }}
-                          animate={{
-                            opacity: [1],
-                            x: ["-80%", "80%"],
-                            y: ["80%", "-80%"],
-                            
-                          }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            ease: "linear",
-                          }}
-                          className="group-hover:block hidden"
-                          fill="none"
-                          stroke="var(--token-21001bb2-95fc-4899-93cf-7cca6736a1a2, rgb(250, 250, 247))"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          style={{ width: "100%", height: "100%" }}
-                        >
-                          <line x1="7" y1="7" x2="17" y2="17"></line>
-                          <polyline points="17 7 17 17 7 17"></polyline>
-                        </motion.svg>
-                      )}
                     </div>
                   </div>
                 </motion.div>
