@@ -31,7 +31,7 @@ export default function Home() {
       ) : (
         <motion.div
           key="main"
-          className="min-h-screen bg-black text-white overflow-x"
+          className="min-h-screen text-white overflow-x"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}

@@ -10,7 +10,7 @@ const GlassButton = () => {
       <button
         className="glass-button"
         onClick={() => {
-          window.open("/amaan-resume.pdf", "_blank");
+          window.open("/Amaan_Shaikh_Resume.pdf", "_blank");
         }}
       >
         <span className="font-gothicWide flex items-center gap-2 relative z-10">

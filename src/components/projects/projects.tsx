@@ -14,8 +14,40 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const projects = [
+  {
+    id: 0,
+    title: "Sylabus",
+    description:
+      "An AI-powered platform for automated syllabus-aligned question paper generation.",
+    fullDescription:
+      "Sylabus is an AI-powered full-stack question paper generation platform built with TypeScript, Next.js, React, Node.js, and MongoDB. It enables educators to automatically generate blueprint-based, syllabus-aligned exam papers with balanced difficulty distribution (Easy/Medium/Hard), marks allocation, and internal choice logic. The system features a dynamic paper builder with drag-and-drop customization, real-time validation, and PDF generation. Designed with scalable REST APIs, indexed MongoDB queries, and role-based access control (RBAC), the platform ensures secure multi-role access and optimized performance, reducing manual paper creation time by 60% and improving educator productivity by 40%.",
+    tech: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Gemini-AI",
+    ],
+    frontendTech: [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    backendTech: ["Node.js", "REST API", "MongoDB", "Gemini-AI"],
+    githubLink: "https://github.com/amaan-10/sylabus-app",
+    liveLink: "https://sylabus.vercel.app",
+    screenshots: ["/images/sylabus-image.png"],
+    year: "2025",
+    category: "Full Stack w/ AI",
+    ai: true,
+  },
   {
     id: 1,
     title: "Nyāyik",
@@ -186,17 +218,41 @@ const Projects = ({ showAll = false }) => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const handleProjectClick = (
     project: (typeof projects)[0],
-    event: React.MouseEvent
+    event: React.MouseEvent,
   ) => {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
+
     setClickPosition({
       x: rect.left + rect.width / 2,
       y: rect.top + rect.height / 2,
     });
+
     setSelectedProject(project);
+
+    // 🔥 Update URL
+    router.push(`?project=${encodeURIComponent(project.title)}`, {
+      scroll: false,
+    });
   };
+
+  useEffect(() => {
+    const projectName = searchParams.get("project");
+
+    if (projectName) {
+      const foundProject = projects.find((p) => p.title === projectName);
+
+      if (foundProject) {
+        setSelectedProject(foundProject);
+      }
+    } else {
+      setSelectedProject(null);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -468,7 +524,10 @@ const Projects = ({ showAll = false }) => {
               >
                 {/* Close Button */}
                 <motion.button
-                  onClick={() => setSelectedProject(null)}
+                  onClick={() => {
+                    setSelectedProject(null);
+                    router.back();
+                  }}
                   className="fixed top-8 right-8 z-20 p-2 hover:bg-white hover:bg-opacity-10 rounded-full transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}

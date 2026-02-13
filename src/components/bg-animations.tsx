@@ -1,61 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import ColorBends from "./ColorBends";
 
 type BlurProps = {
   blurValue?: number;
 };
 
 const BGAnimations = ({ blurValue = 0 }: BlurProps) => {
-  const [blur, setBlur] = useState(0);
-  const [videoSrc, setVideoSrc] = useState("/videos/bg.mp4");
-
-  useEffect(() => {
-    const updateVideoSrc = () => {
-      if (window.innerWidth <= 810) {
-        setVideoSrc("/videos/bg-md.mp4");
-      } else {
-        setVideoSrc("/videos/bg.mp4");
-      }
-    };
-
-    updateVideoSrc();
-    window.addEventListener("resize", updateVideoSrc);
-
-    return () => window.removeEventListener("resize", updateVideoSrc);
-  }, []);
-
-  useEffect(() => {
-    if (blurValue) {
-      setBlur(blurValue);
-      return;
-    }
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const newBlur = Math.min(scrollY / 50, 10);
-      setBlur(newBlur);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [blurValue]);
-
   return (
-    <>
-      <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-        <video
-          className="w-full h-full object-cover transition-all duration-300"
-          style={{ filter: `blur(${blur}px)` }}
-          src={videoSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        />
-      </div>
-    </>
+    <div className="fixed inset-0 -z-10 overflow-hidden">
+      {/* Animated Background */}
+      <ColorBends
+        rotation={0}
+        speed={0.2}
+        scale={1}
+        frequency={1}
+        warpStrength={1}
+        mouseInfluence={0}
+        parallax={0.5}
+        noise={0.15}
+        transparent
+        autoRotate={0}
+      />
+
+      {/* Glass Overlay */}
+      <div className="absolute inset-0 backdrop-blur-sm bg-black/25" />
+    </div>
   );
 };
 
