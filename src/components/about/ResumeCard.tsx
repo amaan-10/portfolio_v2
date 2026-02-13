@@ -9,6 +9,26 @@ const ResumeCard = () => {
 
   const buttonRef = useRef<HTMLAnchorElement>(null);
 
+  const getPath = (
+    update: number,
+    smoothing: number,
+    pointsNew: [number, number][] | null,
+  ) => {
+    const points = pointsNew || [
+      [4, 12],
+      [12, update],
+      [20, 12],
+    ];
+    const d = points.reduce(
+      (acc, point, i, a) =>
+        i === 0
+          ? `M ${point[0]},${point[1]}`
+          : `${acc} ${getPoint(point, i, a, smoothing)}`,
+      "",
+    );
+    return `<path d="${d}" />`;
+  };
+
   useEffect(() => {
     const button = buttonRef.current;
     if (!button) return;
@@ -34,7 +54,7 @@ const ResumeCard = () => {
         get(target, key: keyof SvgPathType) {
           return target[key];
         },
-      }
+      },
     );
 
     button.style.setProperty("--duration", duration.toString());
@@ -86,13 +106,13 @@ const ResumeCard = () => {
     point: [number, number],
     i: number,
     a: [number, number][],
-    smoothing: number
+    smoothing: number,
   ) => {
     const cp = (
       current: [number, number],
       previous: [number, number] | undefined,
       next: [number, number] | undefined,
-      reverse: boolean
+      reverse: boolean,
     ) => {
       const p = previous || current;
       const n = next || current;
@@ -111,26 +131,6 @@ const ResumeCard = () => {
     const cps = cp(a[i - 1], a[i - 2], point, false);
     const cpe = cp(point, a[i - 1], a[i + 1], true);
     return `C ${cps[0]},${cps[1]} ${cpe[0]},${cpe[1]} ${point[0]},${point[1]}`;
-  };
-
-  const getPath = (
-    update: number,
-    smoothing: number,
-    pointsNew: [number, number][] | null
-  ) => {
-    const points = pointsNew || [
-      [4, 12],
-      [12, update],
-      [20, 12],
-    ];
-    const d = points.reduce(
-      (acc, point, i, a) =>
-        i === 0
-          ? `M ${point[0]},${point[1]}`
-          : `${acc} ${getPoint(point, i, a, smoothing)}`,
-      ""
-    );
-    return `<path d="${d}" />`;
   };
 
   return (
