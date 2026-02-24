@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import GlassButton from "./glass-button";
+import ShinyText from "@/components/ShinyText";
 // Desktop animations
 const slideInLeft = {
   initial: { opacity: 0, x: -30 },
@@ -48,7 +49,7 @@ const About = () => {
           <div>
             <h2 className="text-[44px] sm:text-5xl xl:text-6xl tracking-tight leading-tight font-gothicSpatial font-black">
               Hi, I am{"  "}
-              <span
+              {/* <span
                 className={`text-[#b5b5b5a3] bg-clip-text inline-block font-black transition-transform duration-200 animate-shine`}
                 style={{
                   backgroundImage:
@@ -59,7 +60,19 @@ const About = () => {
                 }}
               >
                 Amaan Shaikh
-              </span>
+              </span> */}
+              <ShinyText
+                text="Amaan Shaikh"
+                speed={2}
+                delay={0}
+                color="#b5b5b5a3"
+                shineColor="#ffffff"
+                spread={120}
+                direction="left"
+                yoyo={false}
+                pauseOnHover={false}
+                disabled={false}
+              />
             </h2>
             <p className="text-base mt-4 italic font-gothicWide font-medium">
               Bachelor in Artificial Intelligence and Data Science
